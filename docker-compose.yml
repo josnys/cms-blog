@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  # Database server
+  mysql_database:
+    image: mysql:8
+    container_name: lara-starter-mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 87654321
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    networks:
+      - lara-starter
+
+  # Redis Server
+  redis:
+    image: redis:alpine
+    container_name: lara-starter-redis
+    command: redis-server --appendonly yes --requirepass "${REDIS_PASSWORD}"
+    ports:
+      - 6379:6379
+    networks:
+      - lara-starter
+
+  # Web Server
+  php:
+    build:
+      context: .
+      target: php
+      dockerfile: Dockerfile
+      args:
+        - APP_ENV=${APP_ENV}
+        - APP_URL=${APP_URL}
+    container_name: lara-starter-php
+    environment:
+      - APP_ENV=${APP_ENV}
+      - CONTAINER_ROLE=app
+      - APACHE_DOCUMENT_ROOT=/var/www/html/public
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - 80:80
+    networks:
+      - lara-starter
+    depends_on:
+      - mysql_database
+      - redis
+
+  # Mail service
+  mailpit:
+    image: axllent/mailpit
+    container_name: MailPit
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - lara-starter
+
+volumes:
+  mysql_data: ~
+
+networks:
+  lara-starter:
