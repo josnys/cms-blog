@@ -7,7 +7,7 @@ export default function Dashboard({ auth }) {
                user={auth.user}
                header={<h2 className="font-semibold leading-tight text-md text-slate-800">Admin / Dashboard</h2>}
           >
-               <Head title="Dashboard" />
+               <Head title="Admin Dashboard" />
 
                <section className="w-full">
                     <div className="overflow-hidden bg-white">

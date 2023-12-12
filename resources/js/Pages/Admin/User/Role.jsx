@@ -35,7 +35,7 @@ export default function Role({ auth }) {
                user={auth.user}
                header={<h2 className="font-semibold leading-tight text-md text-slate-700">Admin / <Link href={route('admin.user.index')} className="text-slate-700">Users</Link> / <span className="text-slate-500">Assign Roles</span></h2>}
           >
-               <Head title="Dashboard" />
+               <Head title="Admin Roles" />
 
                <section className="w-full">
                     <FlashMessage />

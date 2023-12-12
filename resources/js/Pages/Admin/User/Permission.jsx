@@ -36,7 +36,7 @@ export default function Permission({ auth }) {
                user={auth.user}
                header={<h2 className="font-semibold leading-tight text-md text-slate-700">Admin / <Link href={route('admin.user.index')} className="text-slate-700">Users</Link> / <span className="text-slate-500">Assign Permissions</span></h2>}
           >
-               <Head title="Dashboard" />
+               <Head title="Admin Permissions" />
 
                <section className="w-full">
                     <FlashMessage />

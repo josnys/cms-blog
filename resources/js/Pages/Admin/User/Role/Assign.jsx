@@ -36,7 +36,7 @@ export default function Assign({ auth }) {
                user={auth.user}
                header={<h2 className="font-semibold leading-tight text-md text-slate-700">Admin / <Link href={route('admin.user.index')} className="text-slate-700">Users</Link> / <Link href={route('admin.role.index')} className="text-slate-700">Roles</Link> / <span className="text-slate-500">Assign Permissions</span></h2>}
           >
-               <Head title="Dashboard" />
+               <Head title="Admin Roles Assignment" />
 
                <section className="w-full">
                     <FlashMessage />

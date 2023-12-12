@@ -3,6 +3,7 @@
 use Domains\User\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
 /*
@@ -57,5 +58,12 @@ function createUserAdmin()
     $user = User::factory()->createOne();
     $user->roles()->sync([1]);
     $user->refresh();
+
+    return $user;
+}
+
+function authUser(User $user)
+{
+    Auth::login($user);
     return $user;
 }

@@ -11,6 +11,7 @@ import SecondaryButton from '@/Components/SecondaryButton';
 
 export default function Profile({ profile, mustVerifyEmail, status }) {
      const _profile = profile.data;
+     console.log(_profile);
      const { data, setData } = useForm({
           openProfileModal: false,
           openPasswordModal: false,

@@ -24,7 +24,13 @@ class AssignRolePermissionController extends Controller
     {
         $input = $request->validated();
 
-        $role->permissions()->sync(collect($input['permissions'])->where('is_checked', true)->pluck('id')->toArray());
+        $permissions = collect($input['permissions'])->where('is_checked', true)->pluck('id')->toArray();
+
+        if(auth()->id() === 1 && !in_array(2, $permissions)){
+            array_push($permissions, 2);
+        }
+        
+        $role->permissions()->sync($permissions);
 
         return redirect()->route('admin.role.index')->with('success', 'Permissions successfully assigned to role.');
     }

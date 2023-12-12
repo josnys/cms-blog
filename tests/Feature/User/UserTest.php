@@ -14,7 +14,7 @@ test('admin user can edit a user', function () {
     $suspended = fake()->boolean();
     $banned = fake()->boolean();
 
-    $response = actingAs($admin)
+    $response = actingAs(authUser($admin))
         ->patch(route('admin.user.update', $user->username), [
             'firstname' => $firstname,
             'lastname' => $lastname,
@@ -37,7 +37,7 @@ test('user can assign role to a user', function(){
     $user = createUser();
     $role = Role::factory()->createOne();
 
-    $response = actingAs($admin)
+    $response = actingAs(authUser($admin))
         ->post(route('admin.user.role.store', $user->username), [
             'roles' => [['id' => $role->id, 'slug' => $role->slug, 'is_checked' => true]]
         ]);
@@ -56,7 +56,7 @@ test('user can assign permission to a user', function(){
         return ['id' => $permission->id, 'slug' => $permission->slug, 'is_checked' => true];
     });
 
-    $response = actingAs($admin)
+    $response = actingAs(authUser($admin))
         ->post(route('admin.user.permission.store', $user->username), [
             'permissions' => $permissions->toArray()
         ]);
@@ -72,7 +72,7 @@ test('user can update a user\'s password', function(){
     $user = createUser();
     $new_password = 'new_password';
 
-    $response = actingAs($admin)
+    $response = actingAs(authUser($admin))
         ->patch(route('admin.user.password.update', $user->username), [
             'password' => $new_password,
             'password_confirmation' => $new_password

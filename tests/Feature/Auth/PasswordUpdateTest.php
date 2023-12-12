@@ -7,7 +7,7 @@ use function Pest\Laravel\{actingAs};
 test('password can be updated', function () {
     $user = createUser();
 
-    $response = actingAs($user)
+    $response = actingAs(authUser($user))
         ->from('/user/profile')
         ->put('/password', [
             'current_password' => 'password',
@@ -26,7 +26,7 @@ test('password can be updated', function () {
 test('correct password must be provided to update password', function () {
     $user = createUser();
 
-    $response = actingAs($user)
+    $response = actingAs(authUser($user))
         ->from('/user/profile')
         ->put('/password', [
             'current_password' => 'wrong-password',

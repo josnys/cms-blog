@@ -1,7 +1,7 @@
 import AdminLayout from '@/Layouts/AdminLayout';
 import { Head, usePage } from '@inertiajs/react';
 import DataTable from '@/Pages/Admin/Components/DataTable';
-import DataTableItem from '../Components/DataTableItem';
+import DataTableItem from '@/Pages/Admin/Components/DataTableItem';
 import Dropdown from '@/Components/Dropdown';
 import Icon from '@/Components/Icon';
 
@@ -14,10 +14,10 @@ export default function Index({ auth }) {
                user={auth.user}
                header={<h2 className="font-semibold leading-tight text-md text-slate-700">Admin / <span className="text-slate-500">Users</span></h2>}
           >
-               <Head title="Dashboard" />
+               <Head title="Admin User" />
 
                <section className="w-full">
-                    <div className="p-4 overflow-hidden bg-white">
+                    <div className="p-4 bg-white">
                          <div className="w-full col-span-12">
                               <div className="p-2 mb-2 rounded bg-slate-50">
                                    <div className="flex justify-end">

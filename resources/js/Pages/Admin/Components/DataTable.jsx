@@ -12,7 +12,7 @@ const TableHeader = (header) => {
 
 export default ({ header, headerClass, showNoData, ...props }) => {
      return (
-          <table className="w-full col-span-12 text-sm table-fixed">
+          <table className="w-full col-span-12 text-sm table-auto">
                <TableHeader captions={header} />
                <tbody className="border border-slate-200">
                     {...props.children}
