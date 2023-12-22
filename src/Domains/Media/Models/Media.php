@@ -6,10 +6,8 @@ namespace Domains\Media\Models;
 
 use Domains\Blog\Models\Concerns\HasSlug;
 use Domains\Concerns\FindActive;
-use Domains\Media\Services\MediaService;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 
 class Media extends Model
 {

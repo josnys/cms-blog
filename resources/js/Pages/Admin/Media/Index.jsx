@@ -1,5 +1,5 @@
 import AdminLayout from '@/Layouts/AdminLayout';
-import { Head, Link, usePage, useForm } from '@inertiajs/react';
+import { Head, usePage, useForm } from '@inertiajs/react';
 import AddButton from '@/Pages/Admin/Components/AddButton';
 import Modal from '@/Components/Modal';
 import Form from '@/Pages/Admin/Media/Form';

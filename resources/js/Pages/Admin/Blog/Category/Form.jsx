@@ -39,7 +39,7 @@ export default function Form({ auth, formSuccess, categoryData }) {
                     <div className="w-full p-4 bg-white rounded-md">
                          <form onSubmit={submit} className="w-full space-y-6">
                               <div>
-                                   <InputLabel htmlFor="name" value="Page Name" />
+                                   <InputLabel htmlFor="name" value="Name" />
                                    <TextInput
                                         id="name"
                                         name="name"

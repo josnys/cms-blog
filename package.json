@@ -20,6 +20,8 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^40.2.0",
+        "@ckeditor/ckeditor5-react": "^6.2.0",
         "classnames": "^2.3.2",
         "date-fns": "^2.30.0"
     }

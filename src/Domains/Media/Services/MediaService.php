@@ -6,9 +6,7 @@ namespace Domains\Media\Services;
 
 use App\Http\Resources\Domains\Media\MediaResource;
 use Domains\Media\Models\Media;
-use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use Illuminate\Support\Facades\Storage;
 
 class MediaService
 {
@@ -29,5 +27,10 @@ class MediaService
           }
 
           return route('file.media.thumbnail', $url);
+     }
+
+     public function getAllActive() : AnonymousResourceCollection
+     {
+          return MediaResource::collection(Media::active()->get());
      }
 }

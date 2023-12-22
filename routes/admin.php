@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\User\UserController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\Blog\PageController;
 use App\Http\Controllers\Admin\Blog\CategoryController;
+use App\Http\Controllers\Admin\Blog\ContentController;
 use App\Http\Controllers\Admin\Blog\SubCategoryController;
 use App\Http\Controllers\Admin\Blog\TagController;
 use App\Http\Controllers\Admin\Media\MediaController;
@@ -81,6 +82,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'p
             Route::get('/', [TagController::class, 'index'])->middleware('permission:read-blog-tag')->name('index');
             Route::post('/create', [TagController::class, 'store'])->name('store');
             Route::patch('/{tag}/edit', [TagController::class, 'update'])->name('update');
+        });
+
+        Route::group(['prefix' => 'content', 'as' => 'content.'], function(){
+            Route::get('/', [ContentController::class, 'index'])->name('index');
+            Route::get('/create', [ContentController::class, 'create'])->name('create');
+            Route::post('/create', [ContentController::class, 'store'])->name('store');
+            Route::get('/{content:slug}/edit', [ContentController::class, 'edit'])->name('edit');
+            Route::patch('/{content:slug}/edit', [ContentController::class, 'update'])->name('update');
         });
     });
 

@@ -15,6 +15,7 @@ class CategoryResource extends JsonResource
             'id' => $this->id,
             'slug' => $this->slug,
             'name' => $this->name,
+            'subcategories' => SubCategoryResource::collection($this->whenLoaded('subcategories')),
             'show_main_menu' => [
                 'text' => $this->show_main_menu ? 'Yes' : 'No',
                 'value' => $this->show_main_menu
@@ -22,7 +23,7 @@ class CategoryResource extends JsonResource
             'status' => [
                 'text' => $this->is_active ? 'Yes' : 'No',
                 'value' => $this->is_active
-            ]
+            ],
         ];
     }
 }

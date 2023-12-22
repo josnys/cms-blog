@@ -19,4 +19,11 @@ class CategoryService
      {
           return new CategoryResource(BlogCategory::where('slug', $slug)->first());
      }
+
+     public function getAllWithSubsActive() : AnonymousResourceCollection
+     {
+          return CategoryResource::collection(BlogCategory::with([
+               'subcategories' => fn ($subcategories) =>  $subcategories->active()
+          ])->active()->get());
+     }
 }
