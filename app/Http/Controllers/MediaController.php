@@ -28,8 +28,8 @@ class MediaController extends Controller
             return response($media->url);
         }
 
-        $path = Str::replace("http://webapp.local/files/", '', $request->url());
+        $path = Str::replace('files/', '', $request->path());
 
-        return response(Storage::get($path))->header('Content-Type', $media->mime_type);
+        return response(Storage::get($path))->header('Content-Type', Str::replaceEnd('/', '', $media->mime_type));
     }
 }

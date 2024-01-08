@@ -50,6 +50,14 @@ class InitialSeeder extends Seeder
             ['name' => 'Read Media', 'status' => true],
             ['name' => 'Update Media', 'status' => true],
             ['name' => 'Delete Media', 'status' => true],
+            ['name' => 'Create Blog Content', 'status' => true],
+            ['name' => 'Read Blog Content', 'status' => true],
+            ['name' => 'Update Blog Content', 'status' => true],
+            ['name' => 'Delete Blog Content', 'status' => true],
+            ['name' => 'Create Gallery', 'status' => true],
+            ['name' => 'Read Gallery', 'status' => true],
+            ['name' => 'Update Gallery', 'status' => true],
+            ['name' => 'Delete Gallery', 'status' => true],
         ];
 
         $roles = [

@@ -30,7 +30,8 @@ class MediaController extends Controller
             'types' => MediaTypeEnum::cases(),
             'authorize_to' => [
                 'create' => $request->user()->allowedTo('create-media'),
-                'edit' => $request->user()->allowedTo('update-media')
+                'edit' => $request->user()->allowedTo('update-media'),
+                'gallery' => $request->user()->allowedTo('read-gallery'),
             ]
         ]]);
     }

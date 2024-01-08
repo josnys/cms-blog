@@ -1,5 +1,5 @@
 import AdminLayout from '@/Layouts/AdminLayout';
-import { Head, usePage, useForm } from '@inertiajs/react';
+import { Head, usePage, useForm, Link } from '@inertiajs/react';
 import AddButton from '@/Pages/Admin/Components/AddButton';
 import Modal from '@/Components/Modal';
 import Form from '@/Pages/Admin/Media/Form';
@@ -49,7 +49,10 @@ export default function Index({ auth }) {
 
                <section className="w-full">
                     <div className="overflow-hidden bg-white">
-                         <div className="w-full p-2 m-2 rounded bg-slate-50">
+                         <div className="flex justify-between p-2 mb-2 rounded bg-slate-50">
+                              <div className="flex items-center">
+                                   {info.authorize_to.gallery ?<Link href={route('admin.media.gallery.index')} className="p-1 rounded bg-slate-200 hover:bg-slate-300 text-slate-700" >Galleries</Link>:null}
+                              </div>
                               <div className="flex justify-end">
                                    {info.authorize_to.create ? <AddButton link="#" onClick={handleModal}>Add New</AddButton> : null}
                               </div>

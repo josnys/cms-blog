@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\Blog\CategoryController;
 use App\Http\Controllers\Admin\Blog\ContentController;
 use App\Http\Controllers\Admin\Blog\SubCategoryController;
 use App\Http\Controllers\Admin\Blog\TagController;
+use App\Http\Controllers\Admin\Media\GalleryController;
 use App\Http\Controllers\Admin\Media\MediaController;
 use App\Http\Controllers\MediaController as ControllersMediaController;
 use Illuminate\Support\Facades\Route;
@@ -85,7 +86,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'p
         });
 
         Route::group(['prefix' => 'content', 'as' => 'content.'], function(){
-            Route::get('/', [ContentController::class, 'index'])->name('index');
+            Route::get('/', [ContentController::class, 'index'])->middleware('permission:read-blog-content')->name('index');
             Route::get('/create', [ContentController::class, 'create'])->name('create');
             Route::post('/create', [ContentController::class, 'store'])->name('store');
             Route::get('/{content:slug}/edit', [ContentController::class, 'edit'])->name('edit');
@@ -97,6 +98,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'p
         Route::get('/', [MediaController::class, 'index'])->middleware('permission:read-media')->name('index');
         Route::post('/create', [MediaController::class, 'store'])->name('store');
         Route::post('/{media:slug}/edit', [MediaController::class, 'update'])->name('update');
+
+        Route::group(['prefix' => 'gallery', 'as' => 'gallery.'], function(){
+            Route::get('/', [GalleryController::class, 'index'])->middleware('permission:read-gallery')->name('index');
+            Route::get('/create', [GalleryController::class, 'create'])->name('create');
+            Route::post('/create', [GalleryController::class, 'store'])->name('store');
+            Route::get('/{gallery:slug}/edit', [GalleryController::class, 'edit'])->name('edit');
+            Route::put('/{gallery:slug}/edit', [GalleryController::class, 'update'])->name('update');
+        });
     });
 });
 

@@ -29,8 +29,8 @@ class ContentController extends Controller
             'contents' => (new ContentService())->getAllPaginate(),
             'assets' => (new AssetsService())->getContentCreationAssets(),
             'authorize_to' => [
-                'create' => $request->user()->allowedTo('create-page'),
-                'edit' => $request->user()->allowedTo('update-page'),
+                'create' => $request->user()->allowedTo('create-blog-content'),
+                'edit' => $request->user()->allowedTo('update-blog-content'),
             ]
         ]]);
     }

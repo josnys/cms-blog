@@ -12,7 +12,7 @@ class ContentRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        return $this->user()->allowedTo('create-blog-content') || $this->user()->allowedTo('update-blog-content');
     }
 
     public function rules(): array

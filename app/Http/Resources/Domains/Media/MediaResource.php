@@ -7,6 +7,7 @@ namespace App\Http\Resources\Domains\Media;
 use Domains\Media\Services\MediaService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class MediaResource extends JsonResource
 {
@@ -17,13 +18,13 @@ class MediaResource extends JsonResource
             'slug' => $this->slug,
             'name' => $this->name,
             'url' => [
-                'name' => $this->url,
+                // 'name' => $this->url,
                 'large' => !$this->is_external ? MediaService::getUrls($this->url) : null,
                 'small' => !$this->is_external ? MediaService::getUrls($this->url, true) : null,
                 'external' => $this->is_external ? $this->url : null
             ],
             'type' => $this->type,
-            'mime' => $this->mime_type,
+            'mime' => Str::replaceEnd('/', '', $this->mime_type),
             'description' => $this->description,
             'external' => [
                 'text' => $this->is_external ? 'Yes' : 'No',
