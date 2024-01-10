@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\Blog\PageController;
 use App\Http\Controllers\Admin\Blog\CategoryController;
 use App\Http\Controllers\Admin\Blog\ContentController;
+use App\Http\Controllers\Admin\Blog\PageDetailController;
 use App\Http\Controllers\Admin\Blog\SubCategoryController;
 use App\Http\Controllers\Admin\Blog\TagController;
 use App\Http\Controllers\Admin\Media\GalleryController;
@@ -65,6 +66,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'p
             Route::get('/', [PageController::class, 'index'])->middleware('permission:read-page')->name('index');
             Route::post('/create', [PageController::class, 'store'])->name('store');
             Route::patch('/{page:slug}/edit', [PageController::class, 'update'])->name('update');
+
+            Route::group(['prefix' => '/{page:slug}/detail', 'as' => 'detail.'], function(){
+                Route::get('/create', [PageDetailController::class, 'create'])->name('create');
+                Route::post('/create', [PageDetailController::class, 'store'])->name('store');
+            });
         });
 
         Route::group(['prefix' => 'category', 'as' => 'category.'], function () {

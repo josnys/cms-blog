@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Resources\Domains\Blog;
 
+use App\Http\Resources\Domains\Media\GalleryCollection;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -15,6 +16,8 @@ class PageResource extends JsonResource
             'id' => $this->id,
             'slug' => $this->slug,
             'name' => $this->name,
+            'gallery' => GalleryCollection::make($this->whenLoaded('gallery')),
+            'content' => ContentCollection::make($this->whenLoaded('content')),
             'show_main_menu' => [
                 'text' => $this->show_main_menu ? 'Yes' : 'No',
                 'value' => $this->show_main_menu

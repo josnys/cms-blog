@@ -21,4 +21,15 @@ class GalleryService
      {
           return GalleryResource::make(Gallery::with('medias')->where('slug', $slug)->first());
      }
+
+     public function getAllActiveToCompose() : array
+     {
+          return Gallery::active()->get()->map(function($gallery){
+               return [
+                    'id' => $gallery->id,
+                    'name' => $gallery->name,
+                    'date' => $gallery->created_at->format('d M Y')
+               ];
+          })->toArray();
+     }
 }

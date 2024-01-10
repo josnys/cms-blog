@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Domains\Blog\Models;
 
 use Domains\Blog\Models\Concerns\HasSlug;
+use Domains\Concerns\FindActive;
 use Domains\Media\Models\Media;
 use Domains\User\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,6 +16,7 @@ class Content extends Model
 {
     use HasFactory;
     use HasSlug;
+    use FindActive;
 
     protected $fillable = [
         'slug',

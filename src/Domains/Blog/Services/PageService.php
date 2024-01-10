@@ -19,4 +19,16 @@ class PageService
      {
           return new PageResource(Page::where('slug', $slug)->first());
      }
+
+     public function getBySlugWithAssets(string $slug) : PageResource
+     {
+          // Change this response
+          $page = Page::with(['content' => function($content){
+               return $content->with(['cover', 'category', 'subcategory']);
+          }])->with(['gallery' => function($gallery){
+               return $gallery->with('medias');
+          }])->where('slug', $slug)->first();
+
+          return new PageResource($page);
+     }
 }

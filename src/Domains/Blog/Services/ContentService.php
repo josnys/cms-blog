@@ -19,4 +19,15 @@ class ContentService
      {
           return ContentResource::make(Content::with(['user.person', 'cover', 'category', 'subcategory'])->where('slug', $slug)->first());
      }
+
+     public function getAllActiveToCompose() : Array
+     {
+          return Content::active()->get()->map(function($content){
+               return [
+                    'id' => $content->id,
+                    'name' => $content->name,
+                    'date' => $content->created_at->format('d M Y')
+               ];
+          })->toArray();
+     }
 }
