@@ -20,15 +20,38 @@ class PageService
           return new PageResource(Page::where('slug', $slug)->first());
      }
 
-     public function getBySlugWithAssets(string $slug) : PageResource
+     public function getBySlugWithAssets(string $slug) : array
      {
-          // Change this response
           $page = Page::with(['content' => function($content){
                return $content->with(['cover', 'category', 'subcategory']);
           }])->with(['gallery' => function($gallery){
                return $gallery->with('medias');
           }])->where('slug', $slug)->first();
 
-          return new PageResource($page);
+          $content = $page->content->map(function($content){
+               return [
+                    'type' => $content->pivot->type, 
+                    'block' => ['id' => $content->id, 'type' => $content->pivot->type, 'order' => $content->pivot->order, 'status' => $content->pivot->is_active, 'name' => $content->name],
+                    'order' => $content->pivot->order,
+                    'status' => $content->pivot->is_active
+               ];
+          })->toArray();
+
+          $gallery = $page->gallery->map(function($gallery){
+               return
+               [
+                    'type' => $gallery->pivot->type,
+                    'block' => ['id' => $gallery->id, 'type' => $gallery->pivot->type, 'order' => $gallery->pivot->order, 'status' => $gallery->pivot->is_active, 'name' => $gallery->name],
+                    'order' => $gallery->pivot->order,
+                    'status' => $gallery->pivot->is_active
+               ];
+          })->toArray();
+          
+          return [
+               'id' => $page->id,
+               'name' => $page->name,
+               'slug' => $page->slug,
+               'block_display' => collect(array_merge($content, $gallery))->sortBy('order')->toArray(),
+          ];
      }
 }

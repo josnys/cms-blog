@@ -81,7 +81,7 @@ export default function Index({ auth }) {
                                                             {info.authorize_to.edit ? <Dropdown.Link href={'#'} onClick={e=>handleEditModal(e, page)}>
                                                                  <Icon className={`mr-2 w-4 h-4`} name={'edit'} />Edit
                                                             </Dropdown.Link> : null}
-                                                            {info.authorize_to.edit ? <Dropdown.Link href={route('admin.blog.page.detail.create', page.slug)}>
+                                                            {info.authorize_to.details ? <Dropdown.Link href={route('admin.blog.page.detail.create', page.slug)}>
                                                                  <Icon className={`mr-2 w-4 h-4`} name={'news-paper'} />Details
                                                             </Dropdown.Link> : null}
                                                        </Dropdown.Content>

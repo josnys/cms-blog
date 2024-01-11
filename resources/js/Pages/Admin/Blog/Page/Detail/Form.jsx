@@ -20,7 +20,7 @@ export default function Form({ auth }) {
           content: '',
           order: '',
           status: true,
-          block_display: [],
+          block_display: info.page.block_display || [],
           blocks: [],
      });
 
@@ -32,6 +32,7 @@ export default function Form({ auth }) {
 
           let block = data.content ? info.contents.find((c) => c.id == data.content) : info.galleries.find((g) => g.id == data.gallery);
           let block_display = data.block_display;
+          // Don't allow duplication.
           block_display.push({
                type: data.type,
                block: block,
@@ -85,7 +86,7 @@ export default function Form({ auth }) {
                blocks: blocks
           }));
           
-          post(route('admin.blog.page.detail.store', info.page.data.slug));
+          post(route('admin.blog.page.detail.store', info.page.slug));
      };
 
      return (
@@ -101,7 +102,7 @@ export default function Form({ auth }) {
                          <div className="w-full p-2">
                               <form onSubmit={submit} className="flex w-full space-y-6">
                                    <div className="w-1/2 p-4">
-                                        <h3 className="font-semibold text-slate-400">Page <span className="italic text-slate-600">{info.page.data.name}</span></h3>
+                                        <h3 className="font-semibold text-slate-400">Page <span className="italic text-slate-600">{info.page.name}</span></h3>
                                         <div>
                                              <InputLabel htmlFor="type" value="Type" />
                                              <SelectInput
@@ -178,7 +179,6 @@ export default function Form({ auth }) {
                                              </label>
                                         </div>
                                         <div className="flex justify-end">
-                                             {/* <PrimaryButton disabled={processing}>Save</PrimaryButton> */}
                                              <SecondaryButton onClick={handleAdd}>Add</SecondaryButton>
                                         </div>
                                    </div>

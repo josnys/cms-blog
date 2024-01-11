@@ -35,11 +35,15 @@ class Page extends Model
 
     public function content() : BelongsToMany
     {
-        return $this->belongsToMany(Content::class, 'page_details', 'page_id', 'block_id')->wherePivot('type', PageDetailTypeEnum::CONTENT);
+        return $this->belongsToMany(Content::class, 'page_details', 'page_id', 'block_id')
+            ->wherePivot('type', PageDetailTypeEnum::CONTENT)
+            ->withPivot(['type', 'order', 'is_active']);
     }
 
     public function gallery()
     {
-        return $this->belongsToMany(Gallery::class, 'page_details', 'page_id', 'block_id')->wherePivot('type', PageDetailTypeEnum::GALLERY);
+        return $this->belongsToMany(Gallery::class, 'page_details', 'page_id', 'block_id')
+            ->wherePivot('type', PageDetailTypeEnum::GALLERY)
+            ->withPivot(['type', 'order', 'is_active']);
     }
 }

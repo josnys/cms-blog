@@ -12,7 +12,7 @@ class PageDetailRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        return $this->user()->allowedTo('manage-page-content');
     }
 
     public function rules(): array

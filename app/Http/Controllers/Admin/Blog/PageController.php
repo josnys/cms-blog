@@ -32,6 +32,7 @@ class PageController extends Controller
                 'authorize_to' => [
                     'create' => $request->user()->allowedTo('create-page'),
                     'edit' => $request->user()->allowedTo('update-page'),
+                    'details' => $request->user()->allowedTo('manage-page-content')
                 ]
             ]]);
         } catch (\Exception $e) {

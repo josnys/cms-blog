@@ -58,6 +58,7 @@ class InitialSeeder extends Seeder
             ['name' => 'Read Gallery', 'status' => true],
             ['name' => 'Update Gallery', 'status' => true],
             ['name' => 'Delete Gallery', 'status' => true],
+            ['name' => 'Manage Page Content', 'status' => true]
         ];
 
         $roles = [
