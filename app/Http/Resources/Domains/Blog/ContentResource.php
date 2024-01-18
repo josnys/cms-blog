@@ -6,6 +6,7 @@ namespace App\Http\Resources\Domains\Blog;
 
 use App\Http\Resources\Domains\Media\MediaResource;
 use App\Http\Resources\Domains\User\UserResource;
+use Domains\Blog\Enums\PageDetailTypeEnum;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -19,6 +20,7 @@ class ContentResource extends JsonResource
             'title' => $this->name,
             'intro' => $this->intro,
             'body' => $this->body,
+            'type' => PageDetailTypeEnum::CONTENT->value,
             'cover' => MediaResource::make($this->whenLoaded('cover')),
             'user' => UserResource::make($this->whenLoaded('user')),
             'category' => CategoryResource::make($this->whenLoaded('category')),

@@ -6,7 +6,7 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link, usePage } from '@inertiajs/react';
 
 export default function User({ user, header, children }) {
-     const { auth } = usePage().props;
+     const { auth, app } = usePage().props;
      const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
      return (
@@ -17,7 +17,7 @@ export default function User({ user, header, children }) {
                               <div className="flex">
                                    <div className="flex items-center shrink-0">
                                         <Link href="/">
-                                             <ApplicationLogo className="block w-auto text-gray-800 fill-current h-9" />
+                                             <ApplicationLogo name={app.data.name} logo={app.data.logo} logoClass={`h-14`} showName={false} className="block w-auto fill-current text-slate-800 h-9" />
                                         </Link>
                                    </div>
 

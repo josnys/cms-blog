@@ -1,4 +1,4 @@
-import { useForm, Link } from '@inertiajs/react';
+import { useForm } from '@inertiajs/react';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
@@ -139,7 +139,7 @@ export default function Form({ auth, formSuccess, contentData, assetsData }) {
 
                               <div className="block mt-4">
                                    <InputLabel htmlFor="cover" value="Cover" />
-                                   {data.selectedCover ? <img src={data.selectedCover} className="w-full" /> : null}
+                                   {data.selectedCover ? <img src={data.selectedCover} loading="eager" className="w-full" /> : null}
                                    <DropDownImage>
                                         <DropDownImage.Trigger>
                                              <span className="inline-flex rounded-md">
@@ -154,7 +154,7 @@ export default function Form({ auth, formSuccess, contentData, assetsData }) {
                                         <DropDownImage.Content>
                                              {assetsData.medias.data.map((media, i) => {
                                                   return <DropDownImage.Link key={`media${i}`} href="#" onClick={e => handleCover(e, media)}>
-                                                       <img src={media.url.external ? media.url.external : media.url.small} className="w-full" />
+                                                       <img src={media.url.external ? media.url.external : media.url.small} loading="eager" className="w-full" />
                                                   </DropDownImage.Link>
                                              })}
                                         </DropDownImage.Content>
