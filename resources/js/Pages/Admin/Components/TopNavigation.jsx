@@ -3,11 +3,12 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import Icon from "@/Components/Icon";
 
 export default ({user }) => {
      const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
+     const { app } = usePage().props;
 
      return (<nav className="bg-white border-b border-slate-100">
           <div className="px-4 sm:px-6 lg:px-8">
@@ -15,7 +16,7 @@ export default ({user }) => {
                     <div className="flex">
                          <div className="flex items-center shrink-0">
                               <Link href="/">
-                                   <ApplicationLogo className="block w-auto fill-current text-slate-800 h-9" />
+                                   <ApplicationLogo name={app.data.name} logo={app.data.logo} logoClass={`h-14`} showName={false} className="block w-auto fill-current text-slate-800 h-9" />
                               </Link>
                          </div>
 

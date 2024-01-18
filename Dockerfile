@@ -24,7 +24,7 @@ ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 COPY Docker/apache-config.conf /etc/apache2/sites-available/000-default.conf
 
 # Install PHP extensions.
-RUN docker-php-ext-configure gd \
+RUN docker-php-ext-configure gd --enable-gd --with-jpeg \
      && docker-php-ext-install gd pdo pdo_mysql
 
 # Install Composer globally.

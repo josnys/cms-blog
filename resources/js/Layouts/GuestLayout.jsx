@@ -1,16 +1,29 @@
 import ApplicationLogo from '@/Components/ApplicationLogo';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
+import SiteTopNavigation from '@/Components/SiteTopNavigation';
 
 export default function Guest({ children }) {
+    const { app } = usePage().props;
+    const application = app.data;
+    // const [openNav, setOpenNav] = useState(false);
+
+    // useEffect(() => {
+    //     window.addEventListener(
+    //         "resize",
+    //         () => window.innerWidth >= 960 && setOpenNav(false),
+    //     );
+    // }, []);
+
     return (
-        <div className="flex flex-col items-center min-h-screen pt-6 bg-gray-100 sm:justify-center sm:pt-0">
-            <div>
+        <div className="min-h-screen bg-gray-100 sm:pt-0">
+            <div className="sticky flex items-center justify-between w-full px-4 py-4 bg-white">
                 <Link href="/">
-                    <ApplicationLogo className="w-20 h-20 text-gray-500 fill-current" />
+                    <ApplicationLogo logo={application.logo} name={application.name} showName={false} logoClass={`w-4 md:w-10`} />
                 </Link>
+                <SiteTopNavigation />
             </div>
 
-            <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-md sm:rounded-lg">
+            <div className="w-full col-span-full">
                 {children}
             </div>
         </div>

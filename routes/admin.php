@@ -20,12 +20,17 @@ use App\Http\Controllers\Admin\Blog\SubCategoryController;
 use App\Http\Controllers\Admin\Blog\TagController;
 use App\Http\Controllers\Admin\Media\GalleryController;
 use App\Http\Controllers\Admin\Media\MediaController;
+use App\Http\Controllers\Admin\Shared\SettingController;
 use App\Http\Controllers\MediaController as ControllersMediaController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'permission:admin-access']], function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
     Route::get('/to-user', AdminToUserController::class)->name('to.user');
+
+    Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
+    Route::get('/setting/create', [SettingController::class, 'create'])->name('setting.create');
+    Route::post('/setting/create', [SettingController::class, 'store'])->name('setting.store');
 
     Route::group(['prefix' => 'permission', 'as' => 'permission.'], function () {
         Route::get('/', [PermissionController::class, 'index'])->middleware('permission:read-permission')->name('index');
@@ -117,8 +122,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'p
 
 Route::group(['prefix' => 'files', 'as' => 'file.'], function(){
     Route::group(['prefix' => 'medias', 'as' =>'media.'], function(){
-        Route::get('/{path}', ControllersMediaController::class)->name('full');
-        Route::get('/thumbnails/{path}', ControllersMediaController::class)->name('thumbnail');
+        Route::get('/{path}', [ControllersMediaController::class, 'index'])->name('full');
+        Route::get('/thumbnails/{path}', [ControllersMediaController::class, 'index'])->name('thumbnail');
+        Route::get('/resources/{path}', [ControllersMediaController::class, 'resource'])->name('resource.full');
+        Route::get('/resources/thumbnails/{path}', [ControllersMediaController::class, 'resource'])->name('resource.thumbnail');
     });
 });
 

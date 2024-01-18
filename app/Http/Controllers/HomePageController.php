@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use Domains\Shared\Services\SiteService;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -14,11 +15,9 @@ class HomePageController extends Controller
 {
     public function __invoke(Request $request): Response
     {
-        return Inertia::render('Welcome', [
-            'canLogin' => Route::has('login'),
-            'canRegister' => Route::has('register'),
-            'laravelVersion' => Application::VERSION,
-            'phpVersion' => PHP_VERSION,
-        ]);
+        $page = SiteService::resolveUrl();
+        return Inertia::render($page['type'], ['info' => [
+            'page' => $page['data'],
+        ]]);
     }
 }

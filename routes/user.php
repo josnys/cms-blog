@@ -20,8 +20,10 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth', 'ver
 
 Route::group(['prefix' => 'files', 'as' => 'file.'], function () {
     Route::group(['prefix' => 'medias', 'as' => 'media.'], function () {
-        Route::get('/{path}', MediaController::class)->name('full');
-        Route::get('/thumbnails/{path}', MediaController::class)->name('thumbnail');
+        Route::get('/{path}', [MediaController::class, 'index'])->name('full');
+        Route::get('/thumbnails/{path}', [MediaController::class, 'index'])->name('thumbnail');
+        Route::get('/resource/{path}', [MediaController::class, 'resource'])->name('resource.full');
+        Route::get('/resource/thumbnails/{path}', [MediaController::class, 'resource'])->name('resource.thumbnail');
     });
 });
 
