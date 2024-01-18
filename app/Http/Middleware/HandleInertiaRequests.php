@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use Domains\Shared\Services\SettingsService;
+use Domains\Shared\Services\SiteService;
 use Domains\User\Services\UserService;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
@@ -35,6 +37,8 @@ class HandleInertiaRequests extends Middleware
 
         return [
             ...parent::share($request),
+            'app' => (new SettingsService())->getById(1) ?? [],
+            'menu' => (new SiteService())->getMainMenu(),
             'auth' => [
                 'user' => $user,
                 'can' => $user ? [

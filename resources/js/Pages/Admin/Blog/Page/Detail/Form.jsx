@@ -130,7 +130,7 @@ export default function Form({ auth }) {
                                                   errors={errors.content}
                                                   onChange={e => setData('content', e.target.value)}
                                              >
-                                                  <option key={`con-start`} value="">Select Type</option>
+                                                  <option key={`con-start`} value="">Select Content</option>
                                                   {info.contents.map((content, i) => {
                                                        return <option key={`tip${i}`} value={content.id}>{content.name}</option>
                                                   })}
@@ -147,7 +147,7 @@ export default function Form({ auth }) {
                                                   errors={errors.gallery}
                                                   onChange={e => setData('gallery', e.target.value)}
                                              >
-                                                  <option key={`gal-start`} value="">Select Type</option>
+                                                  <option key={`gal-start`} value="">Select Gallery</option>
                                                   {info.galleries.map((gallery, i) => {
                                                        return <option key={`tip${i}`} value={gallery.id}>{gallery.name}</option>
                                                   })}

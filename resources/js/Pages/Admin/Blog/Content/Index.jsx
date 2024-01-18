@@ -59,7 +59,7 @@ export default function Index({ auth }) {
                               {info.contents.data.map((content, i) => {
                                    return <div className={`p-2 border rounded bg-slate-50 border-slate-100 hover:shadow-md ${info.authorize_to.edit ? 'cursor-pointer' : ''}`} key={`content${i}`} onClick={e => handleEditModal(e, content)}>
                                         <div className="w-full mt-1 text-sm text-slate-500">
-                                             {content.cover ? <img src={content.cover.url.external ?? content.cover.url.small} className="object-cover object-center w-full h-24" alt={content.cover.name} /> : null}
+                                             {content.cover ? <img src={content.cover.url.external ?? content.cover.url.small} loading="eager" className="object-cover object-center w-full h-24" alt={content.cover.name} /> : null}
                                              <h4 className="flex items-center mt-2 font-semibold text-md">{content.title} <span className={`w-2 h-2 rounded-full ml-2 ${content.status.value ? 'bg-green-500' : 'bg-red-500'}`}></span></h4>
                                              <div className="mt-2 font-normal text-justify line-clamp-3" dangerouslySetInnerHTML={{ __html: content.intro }}></div>
                                              <p className="flex justify-between p-2 mt-2 font-medium border-t border-t-slate-400">
