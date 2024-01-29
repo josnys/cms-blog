@@ -14,7 +14,7 @@ export default function VerifyEmail({ status }) {
     return (
         <GuestLayout>
             <Head title="Email Verification" />
-            <div className="flex items-center justify-center w-full h-screen">
+            <div className="flex items-center justify-center w-full h-screen bg-slate-50">
                 <div className="w-full p-4 bg-white rounded md:w-1/4">
                     <div className="mb-4 text-sm text-gray-600">
                         Thanks for signing up! Before getting started, could you verify your email address by clicking on the

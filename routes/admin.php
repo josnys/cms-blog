@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\Blog\SubCategoryController;
 use App\Http\Controllers\Admin\Blog\TagController;
 use App\Http\Controllers\Admin\Media\GalleryController;
 use App\Http\Controllers\Admin\Media\MediaController;
+use App\Http\Controllers\Admin\Shared\PublicationController;
 use App\Http\Controllers\Admin\Shared\SettingController;
 use App\Http\Controllers\MediaController as ControllersMediaController;
 use Illuminate\Support\Facades\Route;
@@ -117,6 +118,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'p
             Route::get('/{gallery:slug}/edit', [GalleryController::class, 'edit'])->name('edit');
             Route::put('/{gallery:slug}/edit', [GalleryController::class, 'update'])->name('update');
         });
+    });
+
+    Route::group(['prefix' => 'publication', 'as' => 'publication.'], function(){
+        Route::get('/', [PublicationController::class, 'index'])->name('index');
+        Route::post('/create', [PublicationController::class, 'store'])->name('store');
+        Route::put('/{publication}/edit', [PublicationController::class, 'update'])->name('update');
     });
 });
 

@@ -8,6 +8,8 @@ use App\Http\Resources\Domains\Blog\PageResource;
 use Domains\Blog\Models\Page;
 use Domains\Media\Services\MediaService;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 class PageService
 {
@@ -21,7 +23,23 @@ class PageService
           return new PageResource(Page::where('slug', $slug)->first());
      }
 
-     public function getBySlugWithAssets(string $slug, bool $full = false) : array
+     public function getBySlugWithAssets(string $slug) : array
+     {
+          $page = Page::with(['content' => function ($content) {
+               return $content->with(['cover', 'category', 'subcategory']);
+          }])->with(['gallery' => function ($gallery) {
+               return $gallery->with('medias');
+          }])->where('slug', $slug)->first();
+
+          return [
+               'id' => $page->id,
+               'name' => $page->name,
+               'slug' => $page->slug,
+               'block_display' => $this->getPageWithAssets($page)
+          ];
+     }
+
+     public function getBySlugWithAssetsFrontEnd(string $slug, bool $full = false) : array
      {
           $page = Page::with(['content' => function($content){
                return $content->with(['cover', 'category', 'subcategory']);
@@ -33,11 +51,13 @@ class PageService
                return [];
           }
 
+          $block = !$full ? $this->getPageWithAssets($page) : $this->getFullPageWithAssets($page);
+          
           return [
                'id' => $page->id,
                'name' => $page->name,
                'slug' => $page->slug,
-               'block_display' => !$full ? $this->getPageWithAssets($page) : $this->getFullPageWithAssets($page),
+               'block_display' => $block,
           ];
      }
 
@@ -46,11 +66,13 @@ class PageService
           $content = $page->content->map(function($content){
                return [
                     'type' => 'content',
+                    'full_display' => Str::contains($content->slug, 'about-us') ? true : false,
+                    'id' => $content->slug,
                     'name' => $content->name,
                     'order' => $content->pivot->order,
                     'intro' => $content->intro,
                     'body' => $content->body,
-                    'cover' => $content->cover ? MediaService::getUrls($content->cover) : null
+                    'cover' => $content->cover ? MediaService::getUrls($content->cover->url) : null
                ];
           })->toArray();
 
@@ -58,16 +80,24 @@ class PageService
                return
                [
                     'type' => 'gallery',
+                    'full_display' => Str::contains($gallery->slug, 'about-us') ? true : false,
+                    'id' => $gallery->slug,
                     'name' => $gallery->name,
                     'description' => $gallery->description,
                     'order' => $gallery->pivot->order,
                     'medias' => $gallery->medias->map(function($media){
-                         return ['name' => $media->name, 'url' => $media->is_external ? $media->url : MediaService::getUrls($media->url, true)];
+                         return [
+                              'name' => $media->name, 
+                              'url' => $media->is_external ? $media->url : MediaService::getUrls($media->url, true), 
+                              'description' => $media->description
+                         ];
                     })->toArray()
                ];
           })->toArray();
           
-          return collect(array_merge($content, $gallery))->sortBy('order')->toArray();
+          return array_values(Arr::sort(array_merge($content, $gallery), function (array $array) {
+               return $array['order'];
+          }));
      }
 
      public function getPageWithAssets(Page $page) : array
@@ -91,6 +121,8 @@ class PageService
                     ];
           })->toArray();
 
-          return collect(array_merge($content, $gallery))->sortBy('order')->toArray();
+          return array_values(Arr::sort(array_merge($content, $gallery), function (array $array) {
+               return $array['order'];
+          }));
      }
 }

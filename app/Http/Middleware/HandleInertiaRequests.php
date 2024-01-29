@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Carbon\Carbon;
 use Domains\Shared\Services\SettingsService;
 use Domains\Shared\Services\SiteService;
 use Domains\User\Services\UserService;
@@ -39,6 +40,7 @@ class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'app' => (new SettingsService())->getById(1) ?? [],
             'menu' => (new SiteService())->getMainMenu(),
+            'additional' => ['mascot' => SiteService::getMascot(), 'current_year' => Carbon::now()->format('Y')],
             'auth' => [
                 'user' => $user,
                 'can' => $user ? [

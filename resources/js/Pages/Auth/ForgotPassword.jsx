@@ -18,7 +18,7 @@ export default function ForgotPassword({ status }) {
     return (
         <GuestLayout>
             <Head title="Forgot Password" />
-            <div className="flex items-center justify-center w-full h-screen">
+            <div className="flex items-center justify-center w-full h-screen bg-slate-50">
                 <div className="w-full p-4 bg-white rounded md:w-1/4">
                     <div className="mb-4 text-sm text-gray-600">
                         Forgot your password? No problem. Just let us know your email address and we will email you a password

@@ -1,4 +1,4 @@
-import ContentSection from '@/Components/ContentSection';
+import ContentSection from '@/Components/ContentSectionFull';
 import GallerySection from '@/Components/GallerySection';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, usePage } from '@inertiajs/react';

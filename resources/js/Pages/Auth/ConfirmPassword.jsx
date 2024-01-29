@@ -26,7 +26,7 @@ export default function ConfirmPassword() {
     return (
         <GuestLayout>
             <Head title="Confirm Password" />
-            <div className="flex items-center justify-center w-full h-screen">
+            <div className="flex items-center justify-center w-full h-screen bg-slate-50">
                 <div className="w-full p-4 bg-white rounded md:w-1/4">
                     <div className="mb-4 text-sm text-gray-600">
                         This is a secure area of the application. Please confirm your password before continuing.

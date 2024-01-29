@@ -17,7 +17,7 @@ export default function Show({ auth }) {
                          <div className="p-4 bg-white shadow sm:p-8 sm:rounded-lg">
                               <Link href={route('admin.setting.create')} className="float-right text-blue-400 hover:text-blue-600 hover:underline">Edit</Link>
                               {settingObj.logo ? <div className="flex justify-center w-full">
-                                   <img src={settingObj.logo.large} className="w-24" />
+                                   <img src={settingObj.logo.large} className="w-40" />
                               </div>:null}
                               <h1 className="text-2xl font-semibold text-center text-slate-700">{settingObj.name}</h1>
                               {settingObj.slogan ? <h3 className="text-lg text-center text-slate-500">{settingObj.slogan}</h3>:null}

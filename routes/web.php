@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Admin\Shared\PublicationController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\UrlResolverController;
@@ -10,6 +12,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomePageController::class)->name('home.page');
 
 Route::get('/page/{slug?}', UrlResolverController::class)->name('site.page');
+
+Route::post('/publication/create', [PublicationController::class, 'store'])->name('publication.store');
+
+Route::post('/contact-us', ContactController::class)->name('site.contact');
 
 Route::group(['prefix' => 'files', 'as' => 'file.'], function () {
      Route::group(['prefix' => 'medias', 'as' => 'media.'], function () {

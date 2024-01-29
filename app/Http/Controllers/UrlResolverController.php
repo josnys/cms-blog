@@ -21,7 +21,10 @@ class UrlResolverController extends Controller
         $page = SiteService::resolveUrl($slug);
 
         return Inertia::render($page['type'], ['info' => [
-            'page' => $page['data']
+            'page' => $page['data'],
+            'cta' => ($request->path() === "/") ? [
+                'app' => ['android' => '#', 'ios' => '#', 'show_site_details' => true, 'extra' => 'Is your local publication on Enpak app ?']
+            ] : null,
         ]]);
     }
 }

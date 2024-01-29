@@ -31,7 +31,7 @@ export default function Register() {
     return (
         <GuestLayout>
             <Head title="Register" />
-            <div className="flex items-center justify-center w-full h-screen">
+            <div className="flex items-center justify-center w-full h-screen bg-slate-50">
                 <div className="w-full p-4 bg-white rounded md:w-1/4">
                     <FlashMessage />
                     <form onSubmit={submit}>

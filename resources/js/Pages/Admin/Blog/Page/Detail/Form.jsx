@@ -8,8 +8,6 @@ import Checkbox from '@/Components/Checkbox';
 import SelectInput from '@/Components/SelectInput';
 import FlashMessage from '@/Components/FlashMessage';
 import SecondaryButton from '@/Components/SecondaryButton';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 export default function Form({ auth }) {
      const { info } = usePage().props;
@@ -64,7 +62,7 @@ export default function Form({ auth }) {
 
      const submit = (e) => {
           e.preventDefault();
-          let blocks = [];
+          let blocks = data.blocks;
           let block_display = data.block_display;
           for (let i = 0; i < block_display.length; i++){
                blocks.push({

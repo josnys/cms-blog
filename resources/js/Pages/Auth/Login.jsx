@@ -30,7 +30,7 @@ export default function Login({ status, canResetPassword }) {
     return (
         <GuestLayout>
             <Head title="Log in" />
-            <div className="flex items-center justify-center w-full h-screen">
+            <div className="flex items-center justify-center w-full h-screen bg-slate-50">
                 <div className="w-full p-4 bg-white rounded md:w-1/4">
                     {status && <div className="mb-4 text-sm font-medium text-green-600">{status}</div>}
                     <FlashMessage />

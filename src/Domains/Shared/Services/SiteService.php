@@ -32,7 +32,7 @@ class SiteService
                return [
                     'type' => $menu->type,
                     'caption' => $menu->caption,
-                    'url' => $menu->url,
+                    'url' => ($menu->url == 'home') ? '/' : $menu->url,
                     'is_id' => (bool)$menu->is_id
                ];
           })->toArray();
@@ -44,7 +44,7 @@ class SiteService
                $slug = "home";
           }
 
-          $page = (new PageService())->getBySlugWithAssets($slug, true);
+          $page = (new PageService())->getBySlugWithAssetsFrontEnd($slug, true);
 
           if($page) {
                return [
@@ -69,5 +69,10 @@ class SiteService
                'type' => 'List',
                'data' => ContentResource::collection($contents)
           ];
+     }
+
+     public static function getMascot() : string
+     {
+          return route('file.media.full', 'ElefantMascot.png');
      }
 }

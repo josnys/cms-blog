@@ -15,9 +15,13 @@ class HomePageController extends Controller
 {
     public function __invoke(Request $request): Response
     {
-        $page = SiteService::resolveUrl();
+        $page = SiteService::resolveUrl('home');
+        
         return Inertia::render($page['type'], ['info' => [
             'page' => $page['data'],
+            'cta' => ($request->path() === "/") ? [
+                'app' => ['android' => '#', 'ios' => '#', 'show_site_details' => true, 'extra' => 'Is your local publication on Enpak app ?']
+            ] : null,
         ]]);
     }
 }

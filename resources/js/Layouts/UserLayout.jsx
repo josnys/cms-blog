@@ -17,7 +17,7 @@ export default function User({ user, header, children }) {
                               <div className="flex">
                                    <div className="flex items-center shrink-0">
                                         <Link href="/">
-                                             <ApplicationLogo name={app.data.name} logo={app.data.logo} logoClass={`h-14`} showName={false} className="block w-auto fill-current text-slate-800 h-9" />
+                                             <ApplicationLogo name={app.data.name} logo={app.data.logo} logoClass={`w-28`} showName={false} className="block w-auto fill-current text-slate-800 h-9" />
                                         </Link>
                                    </div>
 

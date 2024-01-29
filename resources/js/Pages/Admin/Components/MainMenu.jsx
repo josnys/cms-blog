@@ -9,6 +9,7 @@ export default ({user, className}) => {
                <MainMenuItem icon={'user-group'} link={'admin.user.index'} text={'Users'} />
                <MainMenuItem icon={'news-paper'} link={'admin.blog.index'} text={'Blog'} />
                <MainMenuItem icon={'photo'} link={'admin.media.index'} text={'Media'} />
+               <MainMenuItem icon={'clipboard-document'} link={'admin.publication.index'} text={'Publications'} />
           </div>
      );
 }

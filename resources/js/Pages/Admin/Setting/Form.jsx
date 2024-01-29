@@ -12,6 +12,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export default function Form({ auth }) {
      const { info } = usePage().props;
      const settingObj = info.setting?.data || [];
+     console.log(settingObj);
      const { data, setData, put, post, errors, processing, transform } = useForm({
           name: settingObj.name || '',
           slogan: settingObj.slogan || '',
@@ -123,8 +124,8 @@ export default function Form({ auth }) {
                                              <InputLabel htmlFor="slogan" value="Site Slogan" />
                                              <TextInput
                                                   id="id_slogan"
-                                                  name="sogan"
-                                                  value={data.sogan}
+                                                  name="slogan"
+                                                  value={data.slogan}
                                                   className="block w-full mt-1"
                                                   autoComplete="slogan"
                                                   isFocused={false}
