@@ -4,7 +4,6 @@ import Icon from '@/Components/Icon';
 
 const SiteTopNavigation = () => {
      const { menu, auth } = usePage().props;
-     const { url } = usePage();
      const link = window.location.pathname;
      
      return (<>
@@ -19,7 +18,7 @@ const SiteTopNavigation = () => {
                          isActive = (link == _route.replace(window.location.origin, '')) ? true : false;
                     }
                     
-                    return <li key={`top-nav-${i}`} className={`p-1 ${isActive ? 'text-yellow-700 hover:text-yellow-900 focus:outline-slate-500' : 'text-slate-600 hover:text-slate-900 focus:outline-slate-500'} focus:outline focus:outline-2 focus:rounded-sm`}>
+                    return <li key={`top-nav-${i}`} className={`p-1 ${isActive ? 'text-yellow-700 hover:text-yellow-900 focus:outline-slate-500 font-semibold' : 'text-slate-600 hover:text-slate-900 focus:outline-slate-500'} focus:outline focus:outline-2 focus:rounded-sm`}>
                          <Link className="flex items-center" href={item.is_id ? `#${item.url}` : href}>{item.caption}</Link>
                     </li>
                })}
