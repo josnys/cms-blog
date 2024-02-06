@@ -1,10 +1,10 @@
 import { useForm } from '@inertiajs/react';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
+import PrimaryButton from '@/Components/Front/PrimaryButton';
+import TextInput from '@/Components/Front/TextInput';
 import FlashMessage from '@/Components/FlashMessage';
-import TextAreaInput from '@/Components/TextAreaInput';
+import TextAreaInput from '@/Components/Front/TextAreaInput';
 
 export default function Form({ bgData }) {
      const { data, setData, post, errors, processing, reset } = useForm({
@@ -15,12 +15,13 @@ export default function Form({ bgData }) {
 
      const submit = (e) => {
           e.preventDefault();
-          post(route('site.contact'));
+          post(route('site.contact'), {
+               onSuccess: reset()
+          });
      };
 
      return (
           <section className="w-full p-4">
-               <FlashMessage />
                <div className="w-full md:container md:col-span-12 md:mx-auto">
                     <div className="w-full p-2 bg-right bg-no-repeat bg-contain rounded-lg md:p-8 bg-slate-200" style={{ backgroundImage: `url(${bgData})` }}>
                          <form onSubmit={submit} className="w-full space-y-4 md:w-2/3 md:space-y-6">
@@ -28,6 +29,7 @@ export default function Form({ bgData }) {
                                    <h2 className="mt-2 text-xl font-medium text-center md:mt-4 md:text-4xl">We'd love to hear from you!</h2>
                                    <p className="text-xs text-slate-800 md:text-slate-500 md:text-sm">We welcome your inquiries and are here to provide you with more information about how Enpak can help keep you informed and engaged with you local community and the world at large.</p>
                               </div>
+                              <FlashMessage />
                               <div className="w-full md:flex md:space-x-4">
                                    <div className="w-full md:w-1/2">
                                         <InputLabel htmlFor="name" value="Name" />
@@ -52,7 +54,7 @@ export default function Form({ bgData }) {
                                              type="email"
                                              className="block w-full mt-1"
                                              autoComplete="email"
-                                             isFocused={true}
+                                             isFocused={false}
                                              onChange={(e) => setData('email', e.target.value)}
                                              required
                                         />

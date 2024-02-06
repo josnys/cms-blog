@@ -1,5 +1,5 @@
 import { useForm } from "@inertiajs/react";
-import TextInput from "@/Components/TextInput";
+import TextInputButtonIcon from '@/Components/Front/TextInputButtonIcon';
 import InputError from "@/Components/InputError";
 export default function GlobalSearch(){
      const { data, setData, errors, post, processing } = useForm({
@@ -11,9 +11,10 @@ export default function GlobalSearch(){
 
      return (<form onSubmit={handleSubmit} className="w-full">
           <div className="w-full">
-               <TextInput
+               <TextInputButtonIcon
                     id="query"
                     name="query"
+                    icon="search"
                     value={data.query}
                     className="block w-full"
                     autoComplete="query"

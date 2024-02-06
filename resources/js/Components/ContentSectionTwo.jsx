@@ -7,7 +7,7 @@ export default function ContentSectionTwo({ content, className = '' }) {
                          {content.intro ? <article className="w-full prose text-justify text-slate-500 max-w-none prose-md" dangerouslySetInnerHTML={{ __html: content.intro }}></article> : null}
                          {content.cover ? <img src={content.cover} className="object-cover object-center w-full h-40 mt-4 rounded-xl" /> : null}
                     </div>
-                    <div className="w-full mt-4 md:mt-0 md:w-1/2">
+                    <div className="w-full h-64 mt-4 overflow-y-auto md:h-96 md:mt-0 md:w-1/2">
                          <article className="w-full prose text-justify max-w-none prose-md prose-p:bg-white prose-p:p-4 prose-p:border-l-4 prose-p:border-yellow-800" dangerouslySetInnerHTML={{ __html: content.body }}></article>
                     </div>
                </div>

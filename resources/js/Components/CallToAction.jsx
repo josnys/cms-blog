@@ -1,7 +1,7 @@
 import { useForm } from '@inertiajs/react';
 import GlobalSearch from "@/Components/GlobalSearch";
 import Modal from '@/Components/Modal';
-import AddButton from '@/Pages/Admin/Components/AddButton';
+import AddButtonSimple from '@/Components/Front/AddButtonSimple';
 import PublicationForm from '@/Components/Front/PublicationForm';
 
 export default function CallToAction({appData, ctaData, ...props}){
@@ -31,13 +31,15 @@ export default function CallToAction({appData, ctaData, ...props}){
           </div>
           <div className="w-full">
                <div className="container mx-auto">
-                    <div className="md:flex md:items-center md:justify-between">
-                         <div className="text-sm text-center md:font-medium md:text-lg lg:text-2xl text-slate-600 md:text-left">{ctaData.extra}</div>
-                         <div className="w-full p-4 md:w-auto md:p-0">
-                              <GlobalSearch />
-                         </div>
-                         <div className="flex justify-center w-full md:w-auto md:p-0 md:block">
-                              <AddButton link="#" onClick={handleModal}>Add Publication</AddButton>
+                    <div className="w-full p-4 md:flex md:items-center">
+                         <div className="font-medium text-center text-md md:text-lg lg:text-2xl text-slate-600 md:text-left md:w-2/5">{ctaData.extra}</div>
+                         <div className="items-center w-full mt-4 space-x-2 md:mt-0 md:flex md:space-x-4 md:justify-between md:p-0 md:w-3/5">
+                              <div className="w-full md:w-4/6">
+                                   <GlobalSearch />
+                              </div>
+                              <div className="flex justify-center w-full mt-4 md:w-2/6 md:mt-0">
+                                   <AddButtonSimple link="#" onClick={handleModal}>Add Publication</AddButtonSimple>
+                              </div>
                          </div>
                     </div>
                </div>

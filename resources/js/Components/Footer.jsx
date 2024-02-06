@@ -6,13 +6,19 @@ export default function Footer({ appData, copyrightYear }) {
 
           switch (media.toLowerCase()) {
                case 'twitter':
-                    socialClass = {logo: 'stroke-sky-600', bg: 'bg-sky-200'};
+                    socialClass = {logo: 'stroke-white', bg: 'bg-black'};
                     break;
                case 'facebook':
-                    socialClass = { logo: 'stroke-blue-700', bg: 'bg-blue-400' }
+                    socialClass = { logo: 'fill-blue-700', bg: 'bg-blue-300' }
                     break;
-               case 'facebook':
-                    socialClass = { logo: 'stroke-blue-700', bg: 'bg-blue-400' }
+               case 'instagram':
+                    socialClass = { logo: 'stroke-white stroke-1', bg: 'bg-gradient-to-tr from-red-600 to-yellow-400' }
+                    break;
+               case 'tiktok':
+                    socialClass = { logo: 'fill-white', bg: 'bg-gray-800' }
+                    break;
+               case 'youtube':
+                    socialClass = { logo: 'fill-red-700', bg: 'bg-gray-100' }
                     break;
           
                default: socialClass = { logo: 'stroke-slate-500', bg: 'bg-slate-100' }
@@ -36,12 +42,12 @@ export default function Footer({ appData, copyrightYear }) {
                          <li><a href="#" className="w-full md:w-auto hover:underline">Enpak Media Kit</a></li>
                     </ul>
                     <div className="">
-                         <p className="text-sm font-thin text-right text-slate-500">Social Media Connect</p>
+                         <p className="text-sm font-thin text-right text-yellow-800">Social Media Connect</p>
                          {appData.socials.length ? <ul className="flex justify-end mt-4 space-x-4">
                               {appData.socials.map((social, i) => {
-                                   return <li key={`social${i}`} className={`p-2 rounded ${mediaBrand(social.name).bg}`}>
+                                   return <li key={`social${i}`} className={`p-1 md:p-2 rounded ${mediaBrand(social.name).bg}`}>
                                         <a href={social.value} target="_blank">
-                                             <Icon name={social.name.toLowerCase()} className={`stroke-1 fill-none w-6 h-6 ${mediaBrand(social.name).logo}`} />
+                                             <Icon name={social.name.toLowerCase()} className={`stroke-1 fill-none w-4 md:w-6 h-4 md:h-6 ${mediaBrand(social.name).logo}`} />
                                         </a>
                                    </li>
                               })}

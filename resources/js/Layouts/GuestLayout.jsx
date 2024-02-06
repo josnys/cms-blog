@@ -24,7 +24,7 @@ export default function Guest({ children }) {
         <div className="min-h-screen bg-white sm:pt-0">
             <div ref={navbarOffset} className={`flex items-center justify-between w-full sm:px-4 sm:py-4 bg-white ${sticky ? 'fixed top-0 left-0 z-50 transition ease-in-out duration-700 shadow shadow-slate-300' : ''}`}>
                 <Link className="p-4 md:pl-10" href="/">
-                    <ApplicationLogo logo={application.logo} name={application.name} showName={false} logoClass={`w-20 md:w-24 mr-4`} />
+                    <ApplicationLogo logo={application.logo} name={application.name} showName={false} logoClass={`w-20 md:w-36 mr-4`} />
                 </Link>
                 <SiteTopNavigation />
             </div>

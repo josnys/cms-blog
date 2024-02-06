@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Domains\Blog\Services;
 
 use App\Http\Resources\Domains\Blog\PageResource;
+use Domains\Blog\Models\BlogCategory;
+use Domains\Blog\Models\Content;
 use Domains\Blog\Models\Page;
 use Domains\Media\Services\MediaService;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -52,12 +54,31 @@ class PageService
           }
 
           $block = !$full ? $this->getPageWithAssets($page) : $this->getFullPageWithAssets($page);
+          $newsletter = array();
+          if($slug == 'home') {
+               $category = BlogCategory::where('slug', 'newsletter')->first();
+               
+               if($category){
+                    $newsletter = Content::with('cover')->where('blog_category_id', $category->id)->latest('id')->take(4)->get()->map(function($content){
+                         $cover = null;
+                         if($content->cover){
+                              $cover = $content->cover->is_external ? $content->cover->url : MediaService::getUrls($content->cover->url);
+                         }
+                         return [
+                              'slug' => $content->slug,
+                              'title' => $content->name,
+                              'intro' => $content->intro,
+                              'cover' => $cover
+                         ];
+                    })->toArray();
+               }
+          }
           
           return [
                'id' => $page->id,
                'name' => $page->name,
                'slug' => $page->slug,
-               'block_display' => $block,
+               'block_display' => ['blocks' => $block, 'newsletter' => $newsletter],
           ];
      }
 

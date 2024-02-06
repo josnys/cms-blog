@@ -1,0 +1,1 @@
+import{e as r,a as s}from"./index-55d0f6e7.js";const i=r.forwardRef(function({className:e="",isFocused:n=!1,...a},t){const o=t||r.useRef();return r.useEffect(()=>{n&&o.current.focus()},[]),s.jsx("div",{className:e,children:s.jsx("textarea",{...a,className:"border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm "+e,ref:o})})});export{i as T};

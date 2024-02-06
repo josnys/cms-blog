@@ -7,13 +7,14 @@ import MapDisplay from '@/Components/MapDisplay';
 import ContactForm from '@/Components/ContactForm';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, usePage } from '@inertiajs/react';
+import NewsLetterUpdate from '@/Components/Front/NewsLetterUpdate';
 
 export default function Single() {
     const { info, app, additional } = usePage().props;
     const page = info.page.data ?? info.page;
     const cta = info.cta ?? null;
-    const blocks = Object.values(page.block_display);
-    
+    const blocks = Object.values(page.block_display.blocks);
+    const newsletters = Object.values(page.block_display.newsletter);
     const displaySection = (content, i) => {
         let className = (i % 2 == 0)?'bg-white':'bg-orange-50/[.85]';
         if(content.type == 'content'){
@@ -30,12 +31,17 @@ export default function Single() {
             <Head title="Welcome" />
             {cta ? <CallToAction appData={app.data} ctaData={cta.app} /> : null}
             {cta ? <section className="z-0 flex items-center justify-center w-full -mt-32">
-                <MapDisplay />
+                <div className="flex items-center w-full md:container md:mx-auto">
+                    <div className="w-3/4 mx-auto">
+                        <MapDisplay />
+                    </div>
+                </div>
             </section> : null}
             {blocks.map((block, i) => {
                 return displaySection(block, i);
             })}
             {cta ? <CallToActionSimple ctaData={cta.app} /> : null}
+            {newsletters.length ? <NewsLetterUpdate newsletters={newsletters} /> : null}
             <ContactForm bgData={additional.mascot} />
         </GuestLayout>
     );
