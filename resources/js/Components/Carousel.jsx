@@ -37,10 +37,10 @@ export default function Carousel({ data, ...props }) {
      }, []);
 
      return (
-          <div className="relative px-4">
+          <div className="relative w-full px-4">
                <Swiper
                     ref={swiperRef}
-                    slidesPerView={3}
+                    slidesPerView={2}
                     centeredSlides={true}
                     spaceBetween={30}
                     loop={true}
@@ -50,7 +50,7 @@ export default function Carousel({ data, ...props }) {
                          nextEl: ".custom-next-button",
                     }}
                     modules={[Autoplay, Navigation]}
-                    className="max-w-4xl px-0 mySwiper"
+                    className="px-w-2xl md:w-4xl mySwiper"
                     onSlideChange={handleSlideChange}
                     breakpoints={{
                          260: {
@@ -62,7 +62,7 @@ export default function Carousel({ data, ...props }) {
                               spaceBetween: 20,
                          },
                          768: {
-                              slidesPerView: 2,
+                              slidesPerView: 3,
                               spaceBetween: 20,
                          },
                          1024: {
@@ -73,10 +73,10 @@ export default function Carousel({ data, ...props }) {
                >
                     {imgs.map((img, index) => (
                          <SwiperSlide key={index}>
-                              <div className={`relative ${index === activeIndex ? "" : "opacity-50"}`} style={{ width: "100%", height: "100%" }}>
+                              <div className={`relative ${index === activeIndex ? "" : "opacity-35"}`}>
                                    <h3 className="w-full font-semibold text-center tex-sm md:text-lg text-slate-700">{img.name}</h3>
                                    <p className="w-full text-xs text-center md:text-md text-slate-500">{img.description}</p>
-                                   <img style={{ opacity: index === activeIndex ? "1" : "0.5", }} className={`transition-all w-1/2 mx-auto md:mx-0 mt-4`} src={img.url} alt={img.name} />
+                                   <img style={{ opacity: index === activeIndex ? "1" : "0.5", }} className={`transition-all w-full mx-auto md:mx-0 mt-4 rounded-lg md:rounded-xl`} src={img.url} alt={img.name} />
                               </div>
                          </SwiperSlide>
                     ))}

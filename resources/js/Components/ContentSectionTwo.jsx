@@ -8,14 +8,14 @@ export default function ContentSectionTwo({ content, className = '' }) {
                          {content.cover ? <img src={content.cover} className="object-cover object-center w-full h-40 mt-4 rounded-xl" /> : null}
                     </div>
                     <div className="relative w-full mt-4 md:mt-0 md:w-1/2">
-                         <div className="absolute top-0 z-10 w-full h-2/6 bg-gradient-to-b from-white to-transparent"></div>
+                         <div className="absolute top-0 z-10 w-full h-2/6 md:h-1/6 bg-gradient-to-b from-white to-transparent"></div>
                          <div className="h-64 overflow-y-auto md:h-96">
                               <article
                                    className="w-full prose text-justify max-w-none prose-md prose-p:bg-white prose-p:p-4 prose-p:border-l-4 prose-p:border-yellow-800"
                                    dangerouslySetInnerHTML={{ __html: content.body }}
                               ></article>
                          </div>
-                         <div className="absolute bottom-0 z-10 w-full h-2/6 bg-gradient-to-t from-white to-transparent"></div>
+                         <div className="absolute bottom-0 z-10 w-full h-2/6 md:h-1/6 bg-gradient-to-t from-white to-transparent"></div>
                     </div>
                </div>
           </div>
