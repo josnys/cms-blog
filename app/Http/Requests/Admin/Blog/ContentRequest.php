@@ -19,7 +19,7 @@ class ContentRequest extends FormRequest
     {
         return [
             'title' => ['sometimes', 'nullable', 'string', 'max:255'],
-            'intro' => ['sometimes', 'nullable', 'string', 'max:500'],
+            'intro' => ['sometimes', 'nullable', 'string'],
             'category' => ['required', 'integer', 'gt:0'],
             'subcategory' => ['sometimes', 'nullable', 'integer'],
             'body' => ['required', 'string'],
