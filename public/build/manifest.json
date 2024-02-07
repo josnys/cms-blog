@@ -1116,7 +1116,7 @@
     "src": "resources/js/Pages/Profile/Show.jsx"
   },
   "resources/js/Pages/Single.jsx": {
-    "file": "assets/Single-b1ec10ff.js",
+    "file": "assets/Single-072d3d8f.js",
     "imports": [
       "_index-a88fab1b.js",
       "_Icon-3bda4456.js",
@@ -1204,7 +1204,7 @@
       "resources/js/Pages/Single.jsx",
       "resources/js/Pages/User/Dashboard.jsx"
     ],
-    "file": "assets/admin-2f60e536.js",
+    "file": "assets/admin-cb136f43.js",
     "imports": [
       "_index-a88fab1b.js"
     ],
@@ -1267,7 +1267,7 @@
       "resources/js/Pages/Single.jsx",
       "resources/js/Pages/User/Dashboard.jsx"
     ],
-    "file": "assets/app-2f60e536.js",
+    "file": "assets/app-cb136f43.js",
     "imports": [
       "_index-a88fab1b.js"
     ],
@@ -1330,7 +1330,7 @@
       "resources/js/Pages/Single.jsx",
       "resources/js/Pages/User/Dashboard.jsx"
     ],
-    "file": "assets/user-2f60e536.js",
+    "file": "assets/user-cb136f43.js",
     "imports": [
       "_index-a88fab1b.js"
     ],
