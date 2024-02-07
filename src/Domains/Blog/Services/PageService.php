@@ -109,7 +109,7 @@ class PageService
                     'medias' => $gallery->medias->map(function($media){
                          return [
                               'name' => $media->name, 
-                              'url' => $media->is_external ? $media->url : MediaService::getUrls($media->url, true), 
+                              'url' => $media->is_external ? $media->url : MediaService::getUrls($media->url), 
                               'description' => $media->description
                          ];
                     })->toArray()
