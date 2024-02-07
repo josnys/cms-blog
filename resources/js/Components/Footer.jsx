@@ -9,7 +9,7 @@ export default function Footer({ appData, copyrightYear }) {
                     socialClass = {logo: 'stroke-white', bg: ''};
                     break;
                case 'facebook':
-                    socialClass = { logo: 'fill-blue-900 stroke-0', bg: 'bg-blue-100 p-2' }
+                    socialClass = { logo: 'fill-white stroke-blue-900', bg: 'bg-blue-900 p-2' }
                     break;
                case 'instagram':
                     socialClass = { logo: 'stroke-white stroke-1', bg: '' }
