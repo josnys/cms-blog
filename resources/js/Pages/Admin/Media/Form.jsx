@@ -21,7 +21,7 @@ export default function Form({ auth, formSuccess, mediaData, types }) {
           external: mediaData.external?.value || false,
           status: mediaData.status?.value || false,
      });
-
+     console.log(errors);
      function handleFileChange(file, path) {
           setData((data) => ({
                ...data,

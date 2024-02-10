@@ -43,6 +43,10 @@ export default function Carousel({ data, ...props }) {
                     slidesPerView={2}
                     centeredSlides={true}
                     spaceBetween={30}
+                    autoplay={{
+                         delay: 2500,
+                         disableOnInteraction: false,
+                    }}
                     loop={true}
                     slidesPerGroupSkip={1}
                     navigation={{

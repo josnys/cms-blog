@@ -5,22 +5,22 @@ declare(strict_types=1);
 namespace App\Http\Requests\Admin\Media;
 
 use Domains\Media\DTO\MediaData;
+use Domains\Media\Enums\MediaTypeEnum;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use Domains\Media\Enums\MediaTypeEnum;
 
-class MediaRequest extends FormRequest
+class UpdateMediaRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()->allowedTo('create-media');
+        return $this->user()->allowedTo('update-media');
     }
 
     public function rules(): array
     {
         return [
             'name' => ['required', 'string', 'max:80'],
-            'url' => ['required_if:file,null', 'nullable', 'string'],
+            'url' => ['nullable', 'string'],
             'file' => ['required_if:selectedFile,!null', 'nullable', 'image', 'mimes:png,jpg,jpeg', 'max:4096'],
             'type' => ['required', 'string', Rule::in(MediaTypeEnum::values())],
             'description' => ['sometimes', 'string', 'max:255'],
@@ -29,10 +29,10 @@ class MediaRequest extends FormRequest
         ];
     }
 
-    public function payload() : MediaData
+    public function payload(): MediaData
     {
         return MediaData::fromRequest(
-            data : [
+            data: [
                 'name' => $this->string('name')->toString(),
                 'url' => $this->string('url')->toString(),
                 'type' => $this->string('type')->toString(),

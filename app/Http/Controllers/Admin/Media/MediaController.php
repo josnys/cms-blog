@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin\Media;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Media\MediaRequest;
+use App\Http\Requests\Admin\Media\UpdateMediaRequest;
 use Domains\Media\Actions\CreateMediaAction;
 use Domains\Media\Actions\ManipulateImgeAction;
 use Domains\Media\Actions\UpdateMediaAction;
@@ -55,7 +56,7 @@ class MediaController extends Controller
         return redirect()->route('admin.media.index')->with('success', 'Media Uploaded Successfully.');
     }
 
-    public function update(MediaRequest $request, Media $media) : RedirectResponse
+    public function update(UpdateMediaRequest $request, Media $media) : RedirectResponse
     {
         $input = $request->payload()->toArray();
         $input['mime_type'] = $media->mime_type;

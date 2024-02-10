@@ -5,7 +5,7 @@ export default function ContentSectionTwo({ content, className = '' }) {
                     <div className="w-full md:w-1/2">
                          <h1 className="text-2xl font-medium md:text-4xl">{content.name}</h1>
                          {content.intro ? <article className="w-full prose text-justify text-slate-500 max-w-none prose-md" dangerouslySetInnerHTML={{ __html: content.intro }}></article> : null}
-                         {content.cover ? <img src={content.cover} className="object-cover object-center w-full h-40 mt-4 rounded-xl" /> : null}
+                         {content.cover ? <img src={content.cover} className="object-cover object-center w-full mt-4 h-60 rounded-xl" /> : null}
                     </div>
                     <div className="relative w-full h-64 mt-4 md:mt-0 md:h-96 md:w-1/2">
                          <div className="absolute top-0 z-10 w-full h-2/6 md:h-1/6 bg-gradient-to-b from-white to-transparent"></div>
