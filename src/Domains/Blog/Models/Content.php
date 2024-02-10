@@ -8,6 +8,7 @@ use Domains\Blog\Models\Concerns\HasSlug;
 use Domains\Concerns\FindActive;
 use Domains\Media\Models\Media;
 use Domains\User\Models\User;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -53,6 +54,11 @@ class Content extends Model
 
     public function cover() : BelongsTo
     {
-         return $this->belongsTo(Media::class, 'cover_id', 'id');
+        return $this->belongsTo(Media::class, 'cover_id', 'id');
+    }
+
+    public function scopePublished($query) : Builder
+    {
+        return $query->whereNotNull('published_at');
     }
 }

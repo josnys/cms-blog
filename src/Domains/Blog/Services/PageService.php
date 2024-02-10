@@ -59,7 +59,7 @@ class PageService
                $category = BlogCategory::where('slug', 'newsletter')->first();
                
                if($category){
-                    $newsletter = Content::with('cover')->where('blog_category_id', $category->id)->latest('id')->take(4)->get()->map(function($content){
+                    $newsletter = Content::with('cover')->where('blog_category_id', $category->id)->published()->latest('id')->take(4)->get()->map(function($content){
                          $cover = null;
                          if($content->cover){
                               $cover = $content->cover->is_external ? $content->cover->url : MediaService::getUrls($content->cover->url);
