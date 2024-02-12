@@ -10,10 +10,8 @@ class UpdateMediaAction
 {
      public function handle(array $data, Media $media): Media
      {
-          $file = $data['url'] ?? $media->url;
-
           $media->name = $data['name'];
-          $media->url = $file;
+          $media->url = $data['url'];
           $media->type = $data['type'];
           $media->mime_type = $data['mime_type'];
           $media->description = $data['description'];

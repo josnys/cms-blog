@@ -60,6 +60,7 @@ class MediaController extends Controller
     {
         $input = $request->payload()->toArray();
         $input['mime_type'] = $media->mime_type;
+        $input['url'] = $media->url;
 
         if (isset($input['file'])) {
             $file = (new ManipulateImgeAction())
