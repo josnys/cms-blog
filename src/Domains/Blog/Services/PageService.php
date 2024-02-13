@@ -87,7 +87,7 @@ class PageService
           $content = $page->content->map(function($content){
                return [
                     'type' => 'content',
-                    'full_display' => Str::contains($content->slug, 'hiring'),
+                    'full_display' => !Str::contains($content->slug, 'about-us'),
                     'id' => $content->slug,
                     'name' => $content->name,
                     'order' => $content->pivot->order,
@@ -104,7 +104,7 @@ class PageService
                return
                [
                     'type' => 'gallery',
-                    'full_display' => Str::contains($gallery->slug, 'hiring'),
+                    'full_display' => !Str::contains($gallery->slug, 'about-us'),
                     'id' => $gallery->slug,
                     'name' => $gallery->name,
                     'description' => $gallery->description,
