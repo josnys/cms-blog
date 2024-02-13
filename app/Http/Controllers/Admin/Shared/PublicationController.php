@@ -13,6 +13,7 @@ use Domains\Shared\Services\AddressToGPS;
 use Domains\Shared\Services\PublicationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -24,12 +25,13 @@ class PublicationController extends Controller
 
     public function index(Request $request) : Response
     {
-        Publication::where('gps_location', "")->chunkById(10, function($publications){
+        Publication::where('gps_location', "")->orWhereNull('gps_location')->chunkById(10, function($publications){
             foreach ($publications as $pub) {
                 $address = "{$pub->address_one} {$pub->city}, {$pub->state}, {$pub->zipcode}";
                 $gps = AddressToGPS::make($address)->getGPSCoordinate();
-                $pub->gps_location = $gps;
-                $pub->update();
+                DB::table('publications')
+                    ->where('id', $pub->id)
+                    ->update(['gps_location' => $gps]);
             }
         });
         
