@@ -3,6 +3,7 @@ import GlobalSearch from "@/Components/GlobalSearch";
 import Modal from '@/Components/Modal';
 import AddButtonSimple from '@/Components/Front/AddButtonSimple';
 import PublicationForm from '@/Components/Front/PublicationForm';
+import Icon from '@/Components/Icon';
 
 export default function CallToAction({appData, ctaData, gsearchPubData, ...props}){
      const { data, setData } = useForm({
@@ -22,14 +23,18 @@ export default function CallToAction({appData, ctaData, gsearchPubData, ...props
           gsearchPubData(q);
      }
      
-     return (<section className="w-full pt-10 pb-40 bg-gradient-to-t from-orange-50 to-white">
+     return (<section className="w-full pt-10 pb-40 md:pb-56 bg-gradient-to-t from-orange-50 to-white">
           <div className="flex justify-center w-full">
                <div className="w-full p-4 text-center sm:w-1/2 sm:p-8 text-slate-700">
                     {appData.slogan ? <h2 className="w-3/4 mx-auto mt-4 text-5xl font-semibold sm:w-full">{appData.slogan}</h2> : null}
                     {appData.description ? <div className="mt-4 font-light sm:mt-8 text-slate-500" dangerouslySetInnerHTML={{ __html: appData.description }}></div> : null}
                     <div className="flex items-center justify-center w-full mt-8 space-x-4">
-                         <a href={ctaData.android} className="px-2 py-1 text-xs font-medium bg-white border rounded-full sm:text-sm sm:px-4 sm:py-2 border-slate-300">Download For Android</a>
-                         <a href={ctaData.ios} className="px-2 py-1 text-xs font-medium bg-yellow-800 border border-yellow-700 rounded-full sm:text-sm sm:px-4 sm:py-2 text-yellow-50">Download For iOS</a>
+                         <a href={ctaData.android} className="flex items-center justify-center px-2 py-1 space-x-1 text-xs font-medium bg-white border rounded-full sm:text-sm sm:px-4 sm:py-2 border-slate-300">
+                              <Icon name="android" className={'w-4 h-4 md:w-6 md:h-6'} /> <span>Get it on Google Play</span>
+                         </a>
+                         <a href={ctaData.ios} className="flex items-center justify-center px-2 py-1 space-x-1 text-xs font-medium bg-yellow-800 border border-yellow-700 rounded-full sm:text-sm sm:px-4 sm:py-2 text-yellow-50">
+                              <Icon name="apple" className={'w-4 h-4 md:w-6 md:h-6 fill-white'} /> <span>Download on the App Store</span>
+                         </a>
                     </div>
                </div>
           </div>
@@ -53,7 +58,7 @@ export default function CallToAction({appData, ctaData, gsearchPubData, ...props
                     <h2 className="p-4 text-lg font-medium text-center text-gray-700 md:text-left">Add a publication</h2>
                     <div className="px-2 py-1 text-sm text-yellow-700 cursor-pointer" onClick={handleModal}>x close</div>
                </div>
-               <p className="p-4 text-slate-500">Content to be added</p>
+               <p className="px-4 text-slate-500">We're dedicated to providing comprehensive local news coverage on the Enpak app. If you don't see your preferred local publication featured, we encourage you to submit it for review. Your input helps us ensure that our platform reflects the diverse range of news sources in communities everywhere. Thank you for helping us make Enpak a valuable resource for all users.</p>
                <PublicationForm formSuccess={handleModal} />
           </Modal>
      </section>);

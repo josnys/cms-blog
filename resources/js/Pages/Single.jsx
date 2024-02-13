@@ -17,13 +17,14 @@ export default function Single() {
     const blocks = Object.values(page.block_display.blocks);
     const newsletters = Object.values(page.block_display.newsletter);
     const { data, setData } = useForm({
-        mapData: cta.map
+        mapData: cta ? cta.map : []
     });
     
     const displaySection = (content, i) => {
+        console.log(content);
         let className = (i % 2 == 0)?'bg-white':'bg-orange-50/[.85]';
         if(content.type == 'content'){
-            return content.display_full ? <ContentSectionFull key={`section-${i}`} content={content} className={className} /> : <ContentSectionTwo key={`section-${i}`} content={content} className={className} />;
+            return (content.full_display === true) ? <ContentSectionFull key={`section-${i}`} content={content} className={className} /> : <ContentSectionTwo key={`section-${i}`} content={content} className={className} />;
         } else if(content.type == 'gallery') {
             return <GallerySection key={`section-${i}`} content={content} className={className} carousel={true} />;
         } else {
@@ -42,7 +43,7 @@ export default function Single() {
         <GuestLayout>
             <Head title="Welcome" />
             {cta ? <CallToAction appData={app.data} ctaData={cta.app} gsearchPubData={gsearchPubData} /> : null}
-            {cta ? <section className="z-0 flex items-center justify-center w-full -mt-36">
+            {cta ? <section className="z-0 flex items-center justify-center w-full -mt-40 md:-mt-56">
                 <div className="flex items-center w-full md:container md:mx-auto">
                     <div className="w-3/4 mx-auto">
                         <MapDisplay mapData={data.mapData} />

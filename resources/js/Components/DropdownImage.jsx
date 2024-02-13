@@ -59,7 +59,7 @@ const Content = ({ align = 'left', width = 'full', contentClasses = 'py-2 bg-whi
                          className={`absolute z-50 mt-2 rounded-md shadow-lg ${alignmentClasses} ${widthClasses}`}
                          onClick={() => setOpen(false)}
                     >
-                         <div className={`rounded-md ring-1 ring-black ring-opacity-5 grid grid-cols-6 gap-2 ` + contentClasses}>{children}</div>
+                         <div className={`rounded-md ring-1 ring-black ring-opacity-5` + contentClasses}>{children}</div>
                     </div>
                </Transition>
           </>
@@ -71,7 +71,7 @@ const DropdownLink = ({ className = '', children, ...props }) => {
           <Link
                {...props}
                className={
-                    'flex items-center w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out ' +
+                    'w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out ' +
                     className
                }
           >

@@ -8,11 +8,11 @@ import Modal from '@/Components/Modal';
 import SecondaryButton from '@/Components/SecondaryButton';
 import Form from '@/Pages/Admin/Blog/Category/Form';
 import Dropdown from '@/Components/Dropdown';
+import Pagination from '@/Components/Pagination';
 
 export default function Index({ auth }) {
      const { info } = usePage().props;
      const categories = info.categories.data;
-
      const { data, setData } = useForm({
           openModal: false,
           category: {}
@@ -90,6 +90,7 @@ export default function Index({ auth }) {
                                         </tr>
                                    })}
                               </DataTable>
+                              <Pagination links={info.categories.meta.links} />
                          </div>
                     </div>
                     <Modal show={data.openModal}>

@@ -1,10 +1,11 @@
 import AdminLayout from '@/Layouts/AdminLayout';
 import { Head, usePage, Link } from '@inertiajs/react';
 import AddButton from '@/Pages/Admin/Components/AddButton';
+import Pagination from '@/Components/Pagination';
 
 export default function Index({ auth }) {
      const { info } = usePage().props;
-     console.log(info.galleries.data);
+     
      return (
           <AdminLayout
                user={auth.user}
@@ -32,6 +33,7 @@ export default function Index({ auth }) {
                                    </Link>
                               })}
                          </div>
+                         <Pagination links={info.galleries.meta.links} />
                     </div>
                </section>
           </AdminLayout>

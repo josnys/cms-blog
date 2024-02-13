@@ -1,8 +1,8 @@
 import { useForm } from '@inertiajs/react';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
+import PrimaryButton from '@/Components/Front/PrimaryButton';
+import TextInput from '@/Components/Front/TextInput';
 import FlashMessage from '@/Components/FlashMessage';
 
 export default function Form({ auth, formSuccess }) {
@@ -36,7 +36,7 @@ export default function Form({ auth, formSuccess }) {
                          <form onSubmit={submit} className="w-full space-y-6">
                               <div className="flex w-full space-x-4">
                                    <div className="w-1/2">
-                                        <InputLabel htmlFor="name" value="Name" />
+                                        <InputLabel htmlFor="name" value="Publication" />
                                         <TextInput
                                              id="name"
                                              name="name"
@@ -50,7 +50,7 @@ export default function Form({ auth, formSuccess }) {
                                         <InputError message={errors.name} className="mt-2" />
                                    </div>
                                    <div className="w-1/2">
-                                        <InputLabel htmlFor="website" value="Website Url" />
+                                        <InputLabel htmlFor="website" value="Website" />
                                         <TextInput
                                              id="website"
                                              name="website"
@@ -145,7 +145,7 @@ export default function Form({ auth, formSuccess }) {
                                              value={data.zipcode}
                                              className="block w-full mt-1"
                                              autoComplete="zipcode"
-                                             isFocused={true}
+                                             isFocused={false}
                                              onChange={(e) => setData('zipcode', e.target.value)}
                                              required
                                         />
@@ -153,7 +153,7 @@ export default function Form({ auth, formSuccess }) {
                                    </div>
                               </div>
                               <div className="flex justify-center">
-                                   <PrimaryButton disabled={processing}>Done</PrimaryButton>
+                                   <PrimaryButton disabled={processing}>Submit</PrimaryButton>
                               </div>
                          </form>
                     </div>

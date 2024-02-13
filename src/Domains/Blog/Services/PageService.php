@@ -44,7 +44,7 @@ class PageService
      public function getBySlugWithAssetsFrontEnd(string $slug, bool $full = false) : array
      {
           $page = Page::with(['content' => function($content){
-               return $content->with(['cover', 'category', 'subcategory']);
+               return $content->with(['cover', 'category', 'subcategory', 'user.person']);
           }])->with(['gallery' => function($gallery){
                return $gallery->with('medias');
           }])->where('slug', $slug)->first();
@@ -87,13 +87,16 @@ class PageService
           $content = $page->content->map(function($content){
                return [
                     'type' => 'content',
-                    'full_display' => Str::contains($content->slug, 'about-us') ? true : false,
+                    'full_display' => Str::contains($content->slug, 'hiring'),
                     'id' => $content->slug,
                     'name' => $content->name,
                     'order' => $content->pivot->order,
                     'intro' => $content->intro,
                     'body' => $content->body,
-                    'cover' => $content->cover ? MediaService::getUrls($content->cover->url) : null
+                    'cover' => $content->cover ? MediaService::getUrls($content->cover->url) : null,
+                    'user' => [
+                         'related' => ['person' => ['fullname' => $content->user->person->fullname]]
+                    ]
                ];
           })->toArray();
 
@@ -101,7 +104,7 @@ class PageService
                return
                [
                     'type' => 'gallery',
-                    'full_display' => Str::contains($gallery->slug, 'about-us') ? true : false,
+                    'full_display' => Str::contains($gallery->slug, 'hiring'),
                     'id' => $gallery->slug,
                     'name' => $gallery->name,
                     'description' => $gallery->description,

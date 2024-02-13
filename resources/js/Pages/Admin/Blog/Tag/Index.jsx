@@ -4,6 +4,7 @@ import AddButton from '@/Pages/Admin/Components/AddButton';
 import Modal from '@/Components/Modal';
 import SecondaryButton from '@/Components/SecondaryButton';
 import Form from '@/Pages/Admin/Blog/Tag/Form';
+import Pagination from '@/Components/Pagination';
 
 export default function Index({ auth }) {
      const { info } = usePage().props;
@@ -54,6 +55,7 @@ export default function Index({ auth }) {
                                         </Link>
                                    })}
                               </div>
+                              <Pagination links={info.tags.meta.links} />
                          </div>
                     </div>
                     <Modal show={data.openModal}>

@@ -44,7 +44,7 @@ export default function Carousel({ data, ...props }) {
                     centeredSlides={true}
                     spaceBetween={30}
                     autoplay={{
-                         delay: 2500,
+                         delay: 5000,
                          disableOnInteraction: false,
                     }}
                     loop={true}

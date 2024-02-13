@@ -14,7 +14,7 @@ export default function SubscribeForm(){
 
      return <div className="w-full p-4 rounded-lg bg-slate-100">
           <h3 className="text-lg font-medium md:text-xl">Sign up for our newsletter</h3>
-          <p className="text-sm text-slate-500">As a subscriber, you'll be joining a movement that's dedicated to support local news.</p>
+          <p className="text-sm text-slate-500">As a subscriber, you'll be joining a movement that's dedicated to supporting local news.</p>
           <form onSubmit={handleSubmit} className="w-full mt-4">
                <FlashMessage />
                <div className="w-full">

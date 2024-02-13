@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Admin\Shared\PublicationController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DownloadFileController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\NewsletterSubscriptionController;
@@ -19,6 +20,8 @@ Route::post('/publication/create', [PublicationController::class, 'store'])->nam
 Route::post('/contact-us', ContactController::class)->name('site.contact');
 Route::post('/subscribe', [NewsletterSubscriptionController::class, 'subscribe'])->name('newsletter.subscribe');
 Route::post('/unsubscribe', [NewsletterSubscriptionController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
+
+Route::get('download/{file}', DownloadFileController::class)->name('site.download');
 
 Route::group(['prefix' => 'files', 'as' => 'file.'], function () {
      Route::group(['prefix' => 'medias', 'as' => 'media.'], function () {

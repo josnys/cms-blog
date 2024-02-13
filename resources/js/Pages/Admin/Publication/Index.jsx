@@ -8,6 +8,7 @@ import Modal from '@/Components/Modal';
 import SecondaryButton from '@/Components/SecondaryButton';
 import Form from '@/Pages/Admin/Publication/Form';
 import Dropdown from '@/Components/Dropdown';
+import Pagination from '@/Components/Pagination';
 
 export default function Index({ auth }) {
      const { info } = usePage().props;
@@ -84,6 +85,7 @@ export default function Index({ auth }) {
                                         </tr>
                                    })}
                               </DataTable>
+                              <Pagination links={info.publications.meta.links} />
                          </div>
                     </div>
                     <Modal show={data.openModal}>

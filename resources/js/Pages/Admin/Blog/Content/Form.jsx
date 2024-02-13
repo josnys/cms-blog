@@ -152,11 +152,13 @@ export default function Form({ auth, formSuccess, contentData, assetsData }) {
                                              </span>
                                         </DropDownImage.Trigger>
                                         <DropDownImage.Content>
-                                             {assetsData.medias.data.map((media, i) => {
-                                                  return <DropDownImage.Link key={`media${i}`} href="#" onClick={e => handleCover(e, media)}>
-                                                       <img src={media.url.external ? media.url.external : media.url.small} loading="eager" className="w-full" />
-                                                  </DropDownImage.Link>
-                                             })}
+                                             <div className="grid w-full grid-cols-4 gap-2 overflow-y-auto h-96">
+                                                  {assetsData.medias.data.map((media, i) => {
+                                                       return <DropDownImage.Link key={`media${i}`} href="#" onClick={e => handleCover(e, media)}>
+                                                            <img src={media.url.external ? media.url.external : media.url.small} loading="eager" className="w-full" />
+                                                       </DropDownImage.Link>
+                                                  })}
+                                             </div>
                                         </DropDownImage.Content>
                                    </DropDownImage>
                                    <InputError message={errors.cover} className="mt-2" />

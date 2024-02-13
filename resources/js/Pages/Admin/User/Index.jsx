@@ -4,6 +4,7 @@ import DataTable from '@/Pages/Admin/Components/DataTable';
 import DataTableItem from '@/Pages/Admin/Components/DataTableItem';
 import Dropdown from '@/Components/Dropdown';
 import Icon from '@/Components/Icon';
+import Pagination from '@/Components/Pagination';
 
 export default function Index({ auth }) {
      const { info } = usePage().props;
@@ -83,6 +84,7 @@ export default function Index({ auth }) {
                                         </tr>
                                    })}
                               </DataTable>
+                              <Pagination links={info.users.meta.links} />
                          </div>
                     </div>
                </section>
