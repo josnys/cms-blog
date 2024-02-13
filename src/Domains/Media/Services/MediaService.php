@@ -12,7 +12,7 @@ class MediaService
 {
      public function getAllPaginate() : AnonymousResourceCollection
      {
-          return MediaResource::collection(Media::paginate(50));
+          return MediaResource::collection(Media::latest()->paginate(50));
      }
 
      public function getBySlug(string $slug) : MediaResource
@@ -31,6 +31,6 @@ class MediaService
 
      public function getAllActive() : AnonymousResourceCollection
      {
-          return MediaResource::collection(Media::active()->get());
+          return MediaResource::collection(Media::active()->latest()->get());
      }
 }
