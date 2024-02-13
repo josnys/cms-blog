@@ -23,7 +23,8 @@ class UrlResolverController extends Controller
         return Inertia::render($page['type'], ['info' => [
             'page' => $page['data'],
             'cta' => ($request->path() === "/") ? [
-                'app' => ['android' => 'https://play.google.com/store/apps/details?id=com.brainx.enpak', 'ios' => 'https://apps.apple.com/us/app/enpak/id6456176449', 'show_site_details' => true, 'extra' => 'Is your local publication on Enpak app ?']
+                'app' => ['android' => 'https://play.google.com/store/apps/details?id=com.brainx.enpak', 'ios' => 'https://apps.apple.com/us/app/enpak/id6456176449', 'show_site_details' => true, 'extra' => 'Is your local publication on Enpak app ?'],
+                'map' => $page['map'] ?? null
             ] : null,
         ]]);
     }

@@ -1,3 +1,4 @@
+import { useForm } from '@inertiajs/react';
 import CallToAction from '@/Components/CallToAction';
 import CallToActionSimple from '@/Components/CallToActionSimple';
 import ContentSectionFull from '@/Components/ContentSectionFull';
@@ -15,6 +16,10 @@ export default function Single() {
     const cta = info.cta ?? null;
     const blocks = Object.values(page.block_display.blocks);
     const newsletters = Object.values(page.block_display.newsletter);
+    const { data, setData } = useForm({
+        mapData: cta.map
+    });
+    
     const displaySection = (content, i) => {
         let className = (i % 2 == 0)?'bg-white':'bg-orange-50/[.85]';
         if(content.type == 'content'){
@@ -26,14 +31,21 @@ export default function Single() {
         }
     }
 
+    const gsearchPubData = (query) => {
+        let mapData = cta.map.filter((map) => {
+            return map.name.toLowerCase().lastIndexOf(`${query.toLowerCase()}`) != -1;
+        });
+        setData('mapData', mapData);
+    }
+
     return (
         <GuestLayout>
             <Head title="Welcome" />
-            {cta ? <CallToAction appData={app.data} ctaData={cta.app} /> : null}
-            {cta ? <section className="z-0 flex items-center justify-center w-full -mt-32">
+            {cta ? <CallToAction appData={app.data} ctaData={cta.app} gsearchPubData={gsearchPubData} /> : null}
+            {cta ? <section className="z-0 flex items-center justify-center w-full -mt-36">
                 <div className="flex items-center w-full md:container md:mx-auto">
                     <div className="w-3/4 mx-auto">
-                        <MapDisplay />
+                        <MapDisplay mapData={data.mapData} />
                     </div>
                 </div>
             </section> : null}

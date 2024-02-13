@@ -85,7 +85,7 @@ export default function Carousel({ data, ...props }) {
                          </SwiperSlide>
                     ))}
                </Swiper>
-               <div className="absolute flex items-center justify-between w-full px-3 transform -translate-y-1/2 top-1/2">
+               <div className="absolute z-50 flex items-center justify-between w-full px-3 transform -translate-y-1/2 top-1/2">
                     <div className="custom-prev-button hidden lg:flex items-center justify-center absolute -left-0 h-10 rounded-full cursor-pointer w-10 bg-[#F0F2F4] top-1/2 transform -translate-y-1/2 " onClick={handleCustomPrev}>
                          <Icon name={'chevron-left'} className={'fill-none stroke-2 stroke-slate-700 w-5 h-5 opacity-50'} />
                     </div>

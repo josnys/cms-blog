@@ -4,7 +4,7 @@ import Modal from '@/Components/Modal';
 import AddButtonSimple from '@/Components/Front/AddButtonSimple';
 import PublicationForm from '@/Components/Front/PublicationForm';
 
-export default function CallToAction({appData, ctaData, ...props}){
+export default function CallToAction({appData, ctaData, gsearchPubData, ...props}){
      const { data, setData } = useForm({
           openModal: false,
      });
@@ -16,6 +16,10 @@ export default function CallToAction({appData, ctaData, ...props}){
 
      const toggleModal = () => {
           setData('openModal', !data.openModal);
+     }
+
+     const searchQuery = (q) => {
+          gsearchPubData(q);
      }
      
      return (<section className="w-full pt-10 pb-40 bg-gradient-to-t from-orange-50 to-white">
@@ -35,7 +39,7 @@ export default function CallToAction({appData, ctaData, ...props}){
                          <div className="font-medium text-center text-md md:text-lg lg:text-2xl text-slate-600 md:text-left md:w-2/5">{ctaData.extra}</div>
                          <div className="items-center w-full mt-4 space-x-2 md:mt-0 md:flex md:space-x-4 md:justify-between md:p-0 md:w-3/5">
                               <div className="w-full md:w-4/6">
-                                   <GlobalSearch />
+                                   <GlobalSearch searchQuery={searchQuery} />
                               </div>
                               <div className="flex justify-center w-full mt-4 md:w-2/6 md:mt-0">
                                    <AddButtonSimple link="#" onClick={handleModal}>Add Publication</AddButtonSimple>

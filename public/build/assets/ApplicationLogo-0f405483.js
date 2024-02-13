@@ -1,1 +1,0 @@
-import{a as t}from"./index-c148d4ea.js";function n({name:s,logo:e,logoClass:a,showName:l=!1,...r}){return t.jsxs("span",{className:"flex items-center justify-center space-x-2 text-lg font-medium",children:[e?t.jsx("img",{src:e.small,alt:s,loading:"eager",className:a}):s,l?s:null]})}export{n as A};

@@ -1,12 +1,13 @@
 import { useForm } from "@inertiajs/react";
 import TextInputButtonIcon from '@/Components/Front/TextInputButtonIcon';
 import InputError from "@/Components/InputError";
-export default function GlobalSearch(){
+export default function GlobalSearch({ searchQuery }){
      const { data, setData, errors, post, processing } = useForm({
           query: ''
      });
      const handleSubmit = (e) => {
           e.preventDefault();
+          searchQuery(data.query);
      }
 
      return (<form onSubmit={handleSubmit} className="w-full">

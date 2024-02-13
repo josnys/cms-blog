@@ -8,6 +8,7 @@ use App\Http\Resources\Domains\Blog\ContentResource;
 use Domains\Blog\Models\BlogCategory;
 use Domains\Blog\Models\Content;
 use Domains\Blog\Services\PageService;
+use Domains\Shared\Models\Publication;
 use Illuminate\Support\Facades\DB;
 
 class SiteService
@@ -49,7 +50,20 @@ class SiteService
           if($page) {
                return [
                     'type' => 'Single',
-                    'data' => $page
+                    'data' => $page,
+                    'map' => Publication::active()->get()->map(function($pub){
+                         $gps = !empty($pub->gps_location) ? explode(', ', $pub->gps_location) : null;
+                         return [
+                              'name' => $pub->name,
+                              'city' => $pub->city,
+                              'state' => $pub->state,
+                              'location' => $gps ? [
+                                   'lat' => $gps[0],
+                                   'lon' => $gps[1],
+                                   'marker' => "https://static-00.iconduck.com/assets.00/map-marker-icon-342x512-gd1hf1rz.png"
+                              ] : []
+                         ];
+                    })->toArray()
                ];
           }
 
