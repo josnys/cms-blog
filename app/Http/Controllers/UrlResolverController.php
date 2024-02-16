@@ -26,7 +26,7 @@ class UrlResolverController extends Controller
             'cta' => ($request->path() === "/") ? [
                 'app' => ['android' => 'https://play.google.com/store/apps/details?id=com.enpak.social&pcampaignid=web_share', 'ios' => 'https://apps.apple.com/us/app/enpak/id6456176449', 'show_site_details' => true, 'extra' => 'Is your local publication on the Enpak app ?'],
                 'map' => $page['map'] ?? null,
-                'map_key' => AddressToGPS::$GOOGLE_MAP_KEY
+                'map_key' => AddressToGPS::make('hellow world')->getMapKey()
             ] : null,
         ]]);
     }

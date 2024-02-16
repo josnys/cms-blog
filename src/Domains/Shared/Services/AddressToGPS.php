@@ -6,21 +6,25 @@ namespace Domains\Shared\Services;
 
 class AddressToGPS
 {
-     public static $GOOGLE_MAP_KEY  = "AIzaSyAWnuamee3b6YUQpvXXDmXkA0CvRlsvxms";
-
      private function __construct(
-          protected string $address
+          protected string $address,
+          protected mixed $google_map_key
      ){}
 
      public static function make(string $address) : static
      {
-          return new static($address);
+          return new static($address, env('GOOGLE_MAP_API_KEY'));
+     }
+
+     public function getMapKey() : string|null
+     {
+          return $this->google_map_key;
      }
 
      public function getGPSCoordinate() : string
      {
           $gps = "";
-          $geo = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($this->address) . '&sensor=false&key='.self::$GOOGLE_MAP_KEY);
+          $geo = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($this->address) . '&sensor=false&key='. $this->google_map_key);
 
           $geo = json_decode($geo, true);
 
