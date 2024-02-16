@@ -59,8 +59,8 @@
       "_Icon-5b0a4ec5.js"
     ]
   },
-  "_GuestLayout-cbf4a6fb.js": {
-    "file": "assets/GuestLayout-cbf4a6fb.js",
+  "_GuestLayout-082bd8ce.js": {
+    "file": "assets/GuestLayout-082bd8ce.js",
     "imports": [
       "_index-4af2f7f3.js",
       "_ApplicationLogo-1785afe5.js",
@@ -946,10 +946,10 @@
     "src": "resources/js/Pages/Admin/User/Role/Index.jsx"
   },
   "resources/js/Pages/Auth/ConfirmPassword.jsx": {
-    "file": "assets/ConfirmPassword-6da00f27.js",
+    "file": "assets/ConfirmPassword-25e3835c.js",
     "imports": [
       "_index-4af2f7f3.js",
-      "_GuestLayout-cbf4a6fb.js",
+      "_GuestLayout-082bd8ce.js",
       "_InputError-36cadade.js",
       "_InputLabel-88f834c3.js",
       "_PrimaryButton-0b2d3061.js",
@@ -963,10 +963,10 @@
     "src": "resources/js/Pages/Auth/ConfirmPassword.jsx"
   },
   "resources/js/Pages/Auth/ForgotPassword.jsx": {
-    "file": "assets/ForgotPassword-a0cfb375.js",
+    "file": "assets/ForgotPassword-7900b263.js",
     "imports": [
       "_index-4af2f7f3.js",
-      "_GuestLayout-cbf4a6fb.js",
+      "_GuestLayout-082bd8ce.js",
       "_InputError-36cadade.js",
       "_PrimaryButton-0b2d3061.js",
       "_TextInput-41c9dc8c.js",
@@ -979,11 +979,11 @@
     "src": "resources/js/Pages/Auth/ForgotPassword.jsx"
   },
   "resources/js/Pages/Auth/Login.jsx": {
-    "file": "assets/Login-9f39a979.js",
+    "file": "assets/Login-016f8097.js",
     "imports": [
       "_index-4af2f7f3.js",
       "_Checkbox-d0de64a4.js",
-      "_GuestLayout-cbf4a6fb.js",
+      "_GuestLayout-082bd8ce.js",
       "_InputError-36cadade.js",
       "_InputLabel-88f834c3.js",
       "_PrimaryButton-0b2d3061.js",
@@ -999,10 +999,10 @@
     "src": "resources/js/Pages/Auth/Login.jsx"
   },
   "resources/js/Pages/Auth/Register.jsx": {
-    "file": "assets/Register-01d603de.js",
+    "file": "assets/Register-1f6ab625.js",
     "imports": [
       "_index-4af2f7f3.js",
-      "_GuestLayout-cbf4a6fb.js",
+      "_GuestLayout-082bd8ce.js",
       "_InputError-36cadade.js",
       "_InputLabel-88f834c3.js",
       "_PrimaryButton-0b2d3061.js",
@@ -1018,10 +1018,10 @@
     "src": "resources/js/Pages/Auth/Register.jsx"
   },
   "resources/js/Pages/Auth/ResetPassword.jsx": {
-    "file": "assets/ResetPassword-eeb9b36e.js",
+    "file": "assets/ResetPassword-1145412e.js",
     "imports": [
       "_index-4af2f7f3.js",
-      "_GuestLayout-cbf4a6fb.js",
+      "_GuestLayout-082bd8ce.js",
       "_InputError-36cadade.js",
       "_InputLabel-88f834c3.js",
       "_PrimaryButton-0b2d3061.js",
@@ -1035,10 +1035,10 @@
     "src": "resources/js/Pages/Auth/ResetPassword.jsx"
   },
   "resources/js/Pages/Auth/VerifyEmail.jsx": {
-    "file": "assets/VerifyEmail-62efd4c9.js",
+    "file": "assets/VerifyEmail-264ac14a.js",
     "imports": [
       "_index-4af2f7f3.js",
-      "_GuestLayout-cbf4a6fb.js",
+      "_GuestLayout-082bd8ce.js",
       "_PrimaryButton-0b2d3061.js",
       "_ApplicationLogo-1785afe5.js",
       "_Dropdown-7d9b658b.js",
@@ -1049,11 +1049,11 @@
     "src": "resources/js/Pages/Auth/VerifyEmail.jsx"
   },
   "resources/js/Pages/Content.jsx": {
-    "file": "assets/Content-0dab54cd.js",
+    "file": "assets/Content-15407bb8.js",
     "imports": [
       "_index-4af2f7f3.js",
       "_GallerySection-6a1be282.js",
-      "_GuestLayout-cbf4a6fb.js",
+      "_GuestLayout-082bd8ce.js",
       "_Icon-5b0a4ec5.js",
       "_ApplicationLogo-1785afe5.js",
       "_Dropdown-7d9b658b.js",
@@ -1063,10 +1063,10 @@
     "src": "resources/js/Pages/Content.jsx"
   },
   "resources/js/Pages/List.jsx": {
-    "file": "assets/List-a78dfa9f.js",
+    "file": "assets/List-2fc381e2.js",
     "imports": [
       "_index-4af2f7f3.js",
-      "_GuestLayout-cbf4a6fb.js",
+      "_GuestLayout-082bd8ce.js",
       "_ApplicationLogo-1785afe5.js",
       "_Dropdown-7d9b658b.js",
       "_transition-03e7857e.js",
@@ -1171,7 +1171,7 @@
     "src": "resources/js/Pages/Profile/Show.jsx"
   },
   "resources/js/Pages/Single.jsx": {
-    "file": "assets/Single-a5e675ed.js",
+    "file": "assets/Single-a6cd02c7.js",
     "imports": [
       "_index-4af2f7f3.js",
       "_Icon-5b0a4ec5.js",
@@ -1180,7 +1180,7 @@
       "_InputLabel-88f834c3.js",
       "_FlashMessage-2fccb31c.js",
       "_GallerySection-6a1be282.js",
-      "_GuestLayout-cbf4a6fb.js",
+      "_GuestLayout-082bd8ce.js",
       "_transition-03e7857e.js",
       "_index-511b6dee.js",
       "_ApplicationLogo-1785afe5.js",
@@ -1258,7 +1258,7 @@
       "resources/js/Pages/Single.jsx",
       "resources/js/Pages/User/Dashboard.jsx"
     ],
-    "file": "assets/admin-401232ab.js",
+    "file": "assets/admin-daf27974.js",
     "imports": [
       "_index-4af2f7f3.js"
     ],
@@ -1321,7 +1321,7 @@
       "resources/js/Pages/Single.jsx",
       "resources/js/Pages/User/Dashboard.jsx"
     ],
-    "file": "assets/app-401232ab.js",
+    "file": "assets/app-daf27974.js",
     "imports": [
       "_index-4af2f7f3.js"
     ],
@@ -1384,7 +1384,7 @@
       "resources/js/Pages/Single.jsx",
       "resources/js/Pages/User/Dashboard.jsx"
     ],
-    "file": "assets/user-401232ab.js",
+    "file": "assets/user-daf27974.js",
     "imports": [
       "_index-4af2f7f3.js"
     ],

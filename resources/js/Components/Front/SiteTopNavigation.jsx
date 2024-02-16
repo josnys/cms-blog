@@ -34,12 +34,6 @@ const SiteTopNavigation = () => {
                     >
                          Log in
                     </Link>
-                    <Link
-                         href={route('register')}
-                         className="text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-slate-500"
-                    >
-                         Register
-                    </Link>
                </>)
                }
           </ul>
@@ -70,9 +64,6 @@ const SiteTopNavigation = () => {
                          </Dropdown.Link> : null}
                          {!auth.user ? <Dropdown.Link href={route('login')} >
                               Login
-                         </Dropdown.Link> : null}
-                         {!auth.user ? <Dropdown.Link href={route('register')} >
-                              Register
                          </Dropdown.Link> : null}
                     </Dropdown.Content>
                </Dropdown>
