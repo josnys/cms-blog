@@ -21,7 +21,6 @@ export default function Single() {
     });
     
     const displaySection = (content, i) => {
-        console.log(content);
         let className = (i % 2 == 0)?'bg-white':'bg-orange-50/[.85]';
         if(content.type == 'content'){
             return (content.full_display === true) ? <ContentSectionFull key={`section-${i}`} content={content} className={className} /> : <ContentSectionTwo key={`section-${i}`} content={content} className={className} />;
@@ -46,7 +45,7 @@ export default function Single() {
             {cta ? <section className="z-0 flex items-center justify-center w-full -mt-40 md:-mt-56">
                 <div className="flex items-center w-full md:container md:mx-auto">
                     <div className="w-3/4 mx-auto">
-                        <MapDisplay mapData={data.mapData} />
+                        <MapDisplay mapData={data.mapData} mapKey={cta.map_key} />
                     </div>
                 </div>
             </section> : null}

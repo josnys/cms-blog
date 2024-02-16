@@ -33,12 +33,12 @@ export default function Footer({ appData, copyrightYear }) {
                <div className="w-full pt-4 md:grid md:grid-cols-3 md:gap-1 md:pt-8">
                     <h1 className="font-bold text-yellow-700 uppercase">{appData.name}</h1>
                     <div className="hidden md:flex md:justify-between text-slate-600">
-                         <Link href={route('site.page', 'we-are-hiring')} className="w-full md:w-auto hover:underline">We're hiring</Link>
+                         <Link href={route('site.page', 'we-are-hiring')} className="w-full md:w-auto hover:underline">Enpak Social Internship Program</Link>
                          <Link href={route('site.page', 'terms-of-use')} className="w-full md:w-auto hover:underline">Terms of use</Link>
                          <a target="_blank" href={route('site.download', 'Enpak-Media-Press-Kit-1.pdf')} className="w-full md:w-auto hover:underline">Enpak Media Kit</a>
                     </div>
                     <ul className="block mt-4 md:hidden">
-                         <li><Link href={route('site.page', 'we-are-hiring')} className="w-full md:w-auto hover:underline">We're hiring</Link></li>
+                         <li><Link href={route('site.page', 'we-are-hiring')} className="w-full md:w-auto hover:underline">Enpak Social Internship Program</Link></li>
                          <li><Link href={route('site.page', 'terms-of-use')} className="w-full md:w-auto hover:underline">Terms of use</Link></li>
                          <li><a target="_blank" href={route('site.download', 'Enpak-Media-Press-Kit-1.pdf')} className="w-full md:w-auto hover:underline">Enpak Media Kit</a></li>
                     </ul>

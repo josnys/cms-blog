@@ -6,6 +6,8 @@ namespace Domains\Shared\Services;
 
 class AddressToGPS
 {
+     public static $GOOGLE_MAP_KEY  = "AIzaSyAWnuamee3b6YUQpvXXDmXkA0CvRlsvxms";
+
      private function __construct(
           protected string $address
      ){}
@@ -18,7 +20,7 @@ class AddressToGPS
      public function getGPSCoordinate() : string
      {
           $gps = "";
-          $geo = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($this->address) . '&sensor=false&key=AIzaSyBR3hWMipMRMEc8it4HQaP7Vm7isx8GPwQ');
+          $geo = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($this->address) . '&sensor=false&key='.self::$GOOGLE_MAP_KEY);
 
           $geo = json_decode($geo, true);
 

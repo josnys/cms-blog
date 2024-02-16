@@ -1,20 +1,20 @@
 import React, { useEffect, useRef } from 'react';
 
-export default function MapDisplay({ mapData, ...props }) {
-     console.log(mapData);
+export default function MapDisplay({ mapData, mapKey, ...props }) {
      const googleMapRef = useRef();
      useEffect(() => {
           const googleMapScript = document.createElement('script');
-          googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${'AIzaSyBR3hWMipMRMEc8it4HQaP7Vm7isx8GPwQ'}&libraries=places&language=en`;
+          googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${mapKey}&libraries=places&language=en`;
           googleMapScript.async = true;
           window.document.body.appendChild(googleMapScript);
           googleMapScript.addEventListener('load', () => { createGoogleMap() });
      }, [mapData]);
 
      function createGoogleMap(){
+          console.log(mapData);
           let googleMap = new window.google.maps.Map(googleMapRef.current, {
-               zoom: 5,
-               center: { lat: 40.423584474953735, lng: - 99.95230011373597, },
+               zoom: (mapData.length > 1) ? 5 : 15,
+               center: (mapData.length > 1) ? { lat: 40.423584474953735, lng: - 99.95230011373597, } : { lat: parseFloat(mapData[0].location.lat), lng: parseFloat(mapData[0].location.lon), },
                disableDefaultUI: true,
           });
 
