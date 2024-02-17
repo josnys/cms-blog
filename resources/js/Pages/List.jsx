@@ -11,7 +11,7 @@ export default function Single() {
 
                <section className="w-full">
                     <div className="container mx-auto">
-                         <div className="grid grid-cols-3 gap-3 p-4">
+                         <div className="grid grid-cols-1 gap-2 p-4 md:grid-cols-3 md:gap-3">
                               {page.map((content, i) => {
                                    return <Link href={route('site.page', content.slug)} className={`p-2 border rounded bg-slate-50 border-slate-100 hover:shadow-md`} key={`content${i}`} >
                                         <div className="w-full mt-1 text-sm text-slate-500">
