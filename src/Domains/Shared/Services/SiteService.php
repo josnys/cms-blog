@@ -66,7 +66,7 @@ class SiteService
                     })->toArray()
                ];
           }
-
+          $slug = ($slug == "blogs") ? "newsletter" : $slug;
           $category = BlogCategory::where('slug', $slug)->first();
 
           if(!$category) {
